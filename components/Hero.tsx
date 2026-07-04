@@ -1,80 +1,58 @@
+import Link from "next/link";
 import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="bg-[#0F1115] text-white min-h-screen pt-28 flex items-center">
-      <div className="max-w-[1400px] mx-auto w-full px-8 lg:px-10 py-8 grid lg:grid-cols-2 gap-12 items-center">
+    <section id="home" className="relative overflow-hidden bg-[#0F1115] text-white">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(200,155,60,0.16),_transparent_45%)]" />
 
-        {/* LEFT */}
-        <div>
+      <div className="container-shell relative grid items-center gap-10 py-16 pt-24 sm:py-18 lg:grid-cols-[1.02fr_0.98fr] lg:py-20">
+        <div className="max-w-2xl">
+          <p className="section-label mb-4">25+ Years of Building Excellence</p>
 
-          <p className="text-[#C89B3C] uppercase tracking-[5px] text-sm mb-5">
-            25+ Years of Building Excellence
-          </p>
-
-          <h1 className="text-5xl lg:text-[64px] font-bold leading-[1.05]">
+          <h1 className="text-4xl font-semibold leading-[0.95] tracking-[-0.03em] sm:text-5xl lg:text-[64px]">
             We Build More
             <br />
             Than Structures.
             <br />
-            <span className="text-[#C89B3C]">
-              We Build Trust.
-            </span>
+            <span className="text-[#C89B3C]">We Build Trust.</span>
           </h1>
 
-          <p className="text-gray-300 mt-8 text-lg leading-8 max-w-xl">
-            Premium construction, luxury real estate and smart investment
-            opportunities crafted with engineering excellence,
-            transparency and long-term value.
+          <p className="section-copy mt-6 max-w-xl">
+            Premium construction, luxury real estate and smart investment opportunities crafted with engineering excellence, transparency and long-term value.
           </p>
 
-          <div className="flex flex-wrap gap-5 mt-8">
-
-            <button className="bg-[#C89B3C] text-black px-8 py-4 rounded-xl font-semibold shadow-lg hover:scale-105 hover:shadow-[#C89B3C]/40 transition-all duration-300">
-              Explore Properties
-            </button>
-
-            <button className="border border-[#C89B3C] text-[#C89B3C] px-8 py-4 rounded-xl hover:bg-[#C89B3C] hover:text-black hover:scale-105 transition-all duration-300">
+          <div className="mt-7 flex flex-wrap gap-4 sm:gap-5">
+            <Link href="/properties" className="button-primary">
+  Explore Properties
+</Link>
+            <a href="#about" className="button-secondary">
               Our Legacy
-            </button>
-
+            </a>
           </div>
-
         </div>
 
-        {/* RIGHT */}
-        <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl group">
+        <div className="group relative mx-auto w-full max-w-[620px]">
+          <div className="relative h-[430px] overflow-hidden rounded-[32px] border border-white/10 shadow-[0_30px_90px_rgba(0,0,0,0.35)] sm:h-[500px] lg:h-[560px]">
+            <Image
+              src="/images/villa.png"
+              alt="Luxury villa exterior at an MB Infra development"
+              fill
+              priority
+              className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+            />
 
-          <Image
-            src="/images/villa.png"
-            alt="Luxury Villa"
-            fill
-            priority
-            className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-          />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-
-          {/* Floating Property Card */}
-          <div className="absolute bottom-8 left-8 bg-[#111827]/90 backdrop-blur-xl border border-white/10 rounded-2xl px-7 py-5 shadow-2xl">
-
-            <p className="text-[#C89B3C] uppercase tracking-[3px] text-xs">
-              PREMIUM RESIDENCE
-            </p>
-
-            <h3 className="text-3xl font-bold mt-2">
-              Luxury Villa
-            </h3>
-
-            <p className="text-gray-300 mt-1">
-              Dehradun, Uttarakhand
-            </p>
-
+            <div className="absolute bottom-6 left-6 rounded-[24px] border border-white/10 bg-[#111827]/85 px-6 py-5 shadow-2xl backdrop-blur-xl sm:bottom-8 sm:left-8 sm:px-7 sm:py-6">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#C89B3C]">
+                Premium Residence
+              </p>
+              <h3 className="mt-2 text-2xl font-semibold text-white sm:text-3xl">Luxury Villa</h3>
+              <p className="mt-1 text-sm text-gray-300 sm:text-base">Dehradun, Uttarakhand</p>
+            </div>
           </div>
-
         </div>
-
       </div>
     </section>
   );

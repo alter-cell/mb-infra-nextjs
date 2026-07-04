@@ -11,7 +11,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <>
+    <main className="overflow-x-hidden bg-[#0F1115]">
       <Navbar />
       <Hero />
       <Stats />
@@ -22,6 +22,6 @@ export default function Home() {
       <Process />
       <CTA />
       <Footer />
-    </>
+    </main>
   );
 }

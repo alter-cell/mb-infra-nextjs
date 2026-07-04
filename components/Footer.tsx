@@ -1,168 +1,111 @@
 import Image from "next/image";
 import { MapPin, Phone, Mail, ArrowRight } from "lucide-react";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
-} from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0B0D11] text-white border-t border-white/10">
-      <div className="max-w-[1400px] mx-auto px-8 py-20">
-        <div className="grid lg:grid-cols-4 gap-14">
-          {/* Company */}
-
+    <footer id="contact" className="border-t border-white/10 bg-[#0B0D11] text-white">
+      <div className="container-shell py-16">
+        <div className="grid gap-14 lg:grid-cols-4">
           <div>
             <div className="flex items-center gap-3">
-              <Image
-                src="/logo/mb-logo.png"
-                alt="MB Infra"
-                width={52}
-                height={52}
-              />
-
+              <Image src="/logo/mb-logo.png" alt="MB Infra" width={52} height={52} />
               <div>
-                <h3 className="font-bold text-2xl">MB INFRA</h3>
-
-                <p className="text-[#C89B3C] text-xs tracking-[3px] uppercase">
-                  Building Trust
-                </p>
+                <h3 className="text-2xl font-semibold">MB INFRA</h3>
+                <p className="text-[11px] uppercase tracking-[0.35em] text-[#C89B3C]">Building Trust</p>
               </div>
             </div>
 
-            <p className="text-gray-400 leading-8 mt-8">
-              Premium construction, luxury real estate and smart investment
-              opportunities across Uttarakhand.
+            <p className="mt-8 leading-8 text-gray-400">
+              Premium construction, luxury real estate and smart investment opportunities across Uttarakhand.
             </p>
           </div>
 
-          {/* Quick Links */}
-
           <div>
-            <h4 className="font-semibold text-xl mb-6">Quick Links</h4>
-
+            <h4 className="mb-6 text-xl font-semibold">Quick Links</h4>
             <ul className="space-y-4 text-gray-400">
-              <li className="hover:text-[#C89B3C] cursor-pointer transition">
-                Home
+              <li>
+                <a href="#home" className="transition hover:text-[#C89B3C]">Home</a>
               </li>
-
-              <li className="hover:text-[#C89B3C] cursor-pointer transition">
-                About
+              <li>
+                <a href="#about" className="transition hover:text-[#C89B3C]">About</a>
               </li>
-
-              <li className="hover:text-[#C89B3C] cursor-pointer transition">
-                Services
+              <li>
+                <a href="#services" className="transition hover:text-[#C89B3C]">Services</a>
               </li>
-
-              <li className="hover:text-[#C89B3C] cursor-pointer transition">
-                Projects
+              <li>
+                <a href="#projects" className="transition hover:text-[#C89B3C]">Projects</a>
               </li>
-
-              <li className="hover:text-[#C89B3C] cursor-pointer transition">
-                Contact
+              <li>
+                <a href="#contact" className="transition hover:text-[#C89B3C]">Contact</a>
               </li>
             </ul>
           </div>
 
-          {/* Contact */}
-
           <div>
-            <h4 className="font-semibold text-xl mb-6">Contact</h4>
-
+            <h4 className="mb-6 text-xl font-semibold">Contact</h4>
             <div className="space-y-6 text-gray-400">
               <div className="flex gap-3">
-                <MapPin size={20} className="text-[#C89B3C] mt-1" />
-
+                <MapPin size={20} className="mt-1 shrink-0 text-[#C89B3C]" />
                 <span>
                   Dehradun,
                   <br />
                   Uttarakhand
                 </span>
               </div>
-
               <div className="flex gap-3">
-                <Phone size={20} className="text-[#C89B3C]" />
-
+                <Phone size={20} className="shrink-0 text-[#C89B3C]" />
                 <span>+91 9557427877</span>
               </div>
-
               <div className="flex gap-3">
-                <Mail size={20} className="text-[#C89B3C]" />
-
+                <Mail size={20} className="shrink-0 text-[#C89B3C]" />
                 <span>mbinfraa426@gmail.com</span>
               </div>
             </div>
           </div>
 
-          {/* Newsletter */}
-
           <div>
-            <h4 className="font-semibold text-xl mb-6">
-              Stay Updated
-            </h4>
-
-            <p className="text-gray-400 leading-7 mb-6">
-              Get the latest property launches, investment opportunities and
-              construction insights.
+            <h4 className="mb-6 text-xl font-semibold">Stay Updated</h4>
+            <p className="mb-6 leading-7 text-gray-400">
+              Get the latest property launches, investment opportunities and construction insights.
             </p>
 
-            <div className="flex">
+            <form className="flex">
+              <label htmlFor="email" className="sr-only">
+                Email address
+              </label>
               <input
+                id="email"
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 bg-[#171A20] px-5 py-4 rounded-l-xl outline-none"
+                className="flex-1 rounded-l-full bg-[#171A20] px-5 py-4 text-sm text-white outline-none ring-0"
               />
-
-              <button className="bg-[#C89B3C] px-5 rounded-r-xl hover:bg-[#d6aa4a] transition">
+              <button type="submit" className="rounded-r-full bg-[#C89B3C] px-5 transition hover:bg-[#d6aa4a]" aria-label="Subscribe for updates">
                 <ArrowRight className="text-black" />
               </button>
-            </div>
+            </form>
 
-            {/* Social Icons */}
-
-            <div className="flex gap-4 mt-8">
-              <a
-                href="#"
-                className="w-11 h-11 rounded-full bg-[#171A20] flex items-center justify-center hover:bg-[#C89B3C] hover:text-black transition"
-              >
+            <div className="mt-8 flex gap-4">
+              <a href="#" className="flex h-11 w-11 items-center justify-center rounded-full bg-[#171A20] transition hover:bg-[#C89B3C] hover:text-black">
                 <FaFacebookF size={18} />
               </a>
-
-              <a
-                href="#"
-                className="w-11 h-11 rounded-full bg-[#171A20] flex items-center justify-center hover:bg-[#C89B3C] hover:text-black transition"
-              >
+              <a href="#" className="flex h-11 w-11 items-center justify-center rounded-full bg-[#171A20] transition hover:bg-[#C89B3C] hover:text-black">
                 <FaInstagram size={18} />
               </a>
-
-              <a
-                href="#"
-                className="w-11 h-11 rounded-full bg-[#171A20] flex items-center justify-center hover:bg-[#C89B3C] hover:text-black transition"
-              >
+              <a href="#" className="flex h-11 w-11 items-center justify-center rounded-full bg-[#171A20] transition hover:bg-[#C89B3C] hover:text-black">
                 <FaLinkedinIn size={18} />
               </a>
             </div>
           </div>
         </div>
 
-        {/* Bottom */}
-
-        <div className="border-t border-white/10 mt-16 pt-8 flex flex-col lg:flex-row justify-between items-center text-gray-500 text-sm">
+        <div className="mt-12 flex flex-col items-center justify-between border-t border-white/10 pt-8 text-sm text-gray-500 lg:flex-row">
           <p>© 2026 MB Infra Pvt. Ltd. All Rights Reserved.</p>
 
-          <div className="flex gap-8 mt-4 lg:mt-0">
-            <span className="hover:text-[#C89B3C] cursor-pointer">
-              Privacy Policy
-            </span>
-
-            <span className="hover:text-[#C89B3C] cursor-pointer">
-              Terms & Conditions
-            </span>
-
-            <span className="hover:text-[#C89B3C] cursor-pointer">
-              Cookie Policy
-            </span>
+          <div className="mt-4 flex flex-wrap gap-6 lg:mt-0">
+            <a href="#" className="transition hover:text-[#C89B3C]">Privacy Policy</a>
+            <a href="#" className="transition hover:text-[#C89B3C]">Terms & Conditions</a>
+            <a href="#" className="transition hover:text-[#C89B3C]">Cookie Policy</a>
           </div>
         </div>
       </div>

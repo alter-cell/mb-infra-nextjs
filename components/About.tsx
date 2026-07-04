@@ -10,108 +10,52 @@ const features = [
 
 export default function About() {
   return (
-    <section className="bg-[#111318] text-white py-24">
-      <div className="max-w-[1400px] mx-auto px-8">
-
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-
-          {/* LEFT */}
-
-          <div className="relative">
-
-            <div className="relative h-[560px] rounded-3xl overflow-hidden">
-
-              <Image
-                src="/images/about.jpg"
-                alt="MB Infra"
-                fill
-                className="object-cover"
-              />
-
+    <section id="about" className="bg-[#111318] text-white section-shell">
+      <div className="container-shell">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="relative mx-auto w-full max-w-[560px]">
+            <div className="relative h-[460px] overflow-hidden rounded-[32px] border border-white/10 shadow-[0_30px_90px_rgba(0,0,0,0.3)] sm:h-[520px] lg:h-[560px]">
+              <Image src="/images/about.jpg" alt="MB Infra team and project execution" fill className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-
             </div>
 
-            {/* Floating Card */}
-
-            <div className="absolute -bottom-8 -right-8 bg-[#171A20] border border-[#C89B3C]/20 rounded-3xl px-8 py-7 shadow-2xl">
-
-              <p className="text-[#C89B3C] text-5xl font-bold">
-                25+
-              </p>
-
-              <p className="text-gray-300 mt-2">
-                Years of Building Excellence
-              </p>
-
+            <div className="absolute -bottom-6 -right-4 rounded-[24px] border border-[#C89B3C]/20 bg-[#171A20] px-6 py-6 shadow-2xl sm:-bottom-8 sm:-right-8 sm:px-8 sm:py-7">
+              <p className="text-4xl font-semibold text-[#C89B3C] sm:text-5xl">25+</p>
+              <p className="mt-2 text-sm text-gray-300 sm:text-base">Years of Building Excellence</p>
             </div>
-
           </div>
 
-          {/* RIGHT */}
-
           <div>
-
-            <p className="uppercase tracking-[4px] text-[#C89B3C] text-sm">
-              ABOUT MB INFRA
-            </p>
-
-            <h2 className="text-5xl font-bold leading-tight mt-5">
-              Building Uttarakhand's Future,
+            <p className="section-label">About MB Infra</p>
+            <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-[-0.02em] sm:text-4xl lg:text-5xl">
+              Building Uttarakhand&apos;s Future,
               <br />
               One Landmark at a Time.
             </h2>
 
-            <p className="text-gray-400 text-lg leading-8 mt-8">
-              MB Infra has spent decades delivering premium construction,
-              luxury real estate developments and investment opportunities
-              built on trust, engineering excellence and long-term value.
+            <p className="section-copy mt-6">
+              MB Infra has spent decades delivering premium construction, luxury real estate developments and investment opportunities built on trust, engineering excellence and long-term value.
             </p>
 
-            <p className="text-gray-400 text-lg leading-8 mt-6">
-              From dream homes to investment-ready developments,
-              every project reflects our commitment to quality,
-              transparency and customer satisfaction.
+            <p className="section-copy mt-4">
+              From dream homes to investment-ready developments, every project reflects our commitment to quality, transparency and customer satisfaction.
             </p>
 
-            {/* Features */}
-
-            <div className="grid sm:grid-cols-2 gap-5 mt-10">
-
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {features.map((feature) => (
-
-                <div
-                  key={feature}
-                  className="flex items-start gap-3"
-                >
-
-                  <CheckCircle2
-                    size={22}
-                    className="text-[#C89B3C] mt-1 shrink-0"
-                  />
-
-                  <span className="text-gray-300">
-                    {feature}
-                  </span>
-
+                <div key={feature} className="flex items-start gap-3">
+                  <CheckCircle2 size={20} className="mt-1 shrink-0 text-[#C89B3C]" />
+                  <span className="text-gray-300">{feature}</span>
                 </div>
-
               ))}
-
             </div>
 
-            <button className="mt-10 bg-[#C89B3C] text-black px-7 py-4 rounded-xl font-semibold flex items-center gap-2 hover:scale-105 transition">
-
+            <a href="#projects" className="button-primary mt-8 inline-flex gap-2">
               Learn More
-
               <ArrowRight size={18} />
-
-            </button>
-
+            </a>
           </div>
-
         </div>
-
       </div>
     </section>
   );

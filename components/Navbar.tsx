@@ -20,12 +20,12 @@ export default function Navbar() {
   }, []);
 
   const navItems = [
-    "Home",
-    "About",
-    "Services",
-    "Properties",
-    "Investment",
-    "Contact",
+    { name: "Home", href: "/" },
+    { name: "About", href: "/#about" },
+    { name: "Services", href: "/#services" },
+    { name: "Properties", href: "/properties" },
+    { name: "Investment", href: "/#investment" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -40,8 +40,8 @@ export default function Navbar() {
         <div className="max-w-[1440px] mx-auto px-8 lg:px-12 py-5 flex items-center justify-between">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
 
+          <Link href="/" className="flex items-center gap-3">
             <Image
               src="/logo/mb-logo.png"
               alt="MB Infra"
@@ -59,20 +59,18 @@ export default function Navbar() {
                 BUILDING TRUST
               </p>
             </div>
-
           </Link>
 
           {/* Desktop Navigation */}
-          <ul className="hidden lg:flex items-center gap-10 text-white">
 
+          <ul className="hidden lg:flex items-center gap-10 text-white">
             {navItems.map((item) => (
-              <li
-                key={item}
-                className="relative group cursor-pointer"
-              >
-                <span className="transition duration-300 group-hover:text-[#C89B3C] group-hover:drop-shadow-[0_0_8px_rgba(200,155,60,0.7)]">
-                  {item}
-                </span>
+              <li key={item.name} className="relative group">
+                <Link href={item.href}>
+                  <span className="cursor-pointer transition duration-300 group-hover:text-[#C89B3C] group-hover:drop-shadow-[0_0_8px_rgba(200,155,60,0.7)]">
+                    {item.name}
+                  </span>
+                </Link>
 
                 <span
                   className="
@@ -89,13 +87,12 @@ export default function Navbar() {
                 />
               </li>
             ))}
-
           </ul>
 
           {/* Right Side */}
+
           <div className="flex items-center gap-4">
 
-            {/* Desktop CTA */}
             <button
               className="
                 hidden
@@ -115,24 +112,19 @@ export default function Navbar() {
               Schedule Site Visit
             </button>
 
-            {/* Mobile Button */}
             <button
               className="lg:hidden text-white"
               onClick={() => setMobileOpen(!mobileOpen)}
             >
-              {mobileOpen ? (
-                <X size={30} />
-              ) : (
-                <Menu size={30} />
-              )}
+              {mobileOpen ? <X size={30} /> : <Menu size={30} />}
             </button>
 
           </div>
-
         </div>
       </nav>
 
       {/* Mobile Menu */}
+
       {mobileOpen && (
         <div className="fixed top-[82px] left-0 w-full bg-black/95 backdrop-blur-xl z-40 lg:hidden">
 
@@ -140,12 +132,12 @@ export default function Navbar() {
 
             {navItems.map((item) => (
               <Link
-                key={item}
-                href="/"
+                key={item.name}
+                href={item.href}
                 className="hover:text-[#C89B3C] transition"
                 onClick={() => setMobileOpen(false)}
               >
-                {item}
+                {item.name}
               </Link>
             ))}
 
@@ -163,7 +155,6 @@ export default function Navbar() {
             </button>
 
           </div>
-
         </div>
       )}
     </>

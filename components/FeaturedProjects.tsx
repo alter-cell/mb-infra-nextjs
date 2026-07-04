@@ -27,108 +27,61 @@ const projects = [
 
 export default function FeaturedProjects() {
   return (
-    <section className="bg-[#0F1115] py-20 text-white">
-      <div className="max-w-[1400px] mx-auto px-8">
-
-        {/* Heading */}
-
-        <div className="text-center mb-14">
-
-          <p className="uppercase tracking-[4px] text-[#C89B3C] text-sm">
-            FEATURED PROJECTS
+    <section id="projects" className="bg-[#0F1115] text-white section-shell">
+      <div className="container-shell">
+        <div className="mx-auto mb-8 max-w-3xl text-center">
+          <p className="section-label">Featured Projects</p>
+          <h2 className="section-title mt-3">Discover Your Next Investment</h2>
+          <p className="section-copy mt-3">
+            Explore premium developments designed for modern living, long-term appreciation and exceptional returns.
           </p>
-
-          <h2 className="text-4xl lg:text-5xl font-bold mt-4">
-            Discover Your Next Investment
-          </h2>
-
-          <p className="text-gray-400 max-w-2xl mx-auto mt-5 text-lg leading-8">
-            Explore premium developments designed for modern living,
-            long-term appreciation and exceptional returns.
-          </p>
-
         </div>
 
-        {/* Cards */}
-
-        <div className="grid lg:grid-cols-3 gap-8">
-
+        <div className="grid gap-8 lg:grid-cols-3">
           {projects.map((project) => (
-
-            <div
+            <article
               key={project.title}
-              className="group overflow-hidden rounded-3xl bg-[#171A20] border border-white/5 hover:border-[#C89B3C] hover:ring-1 hover:ring-[#C89B3C]/30 transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_30px_60px_rgba(200,155,60,0.18)]"
+              className="group overflow-hidden rounded-[28px] border border-white/10 bg-[#171A20] shadow-[0_18px_60px_rgba(0,0,0,0.2)] transition-all duration-500 hover:-translate-y-1 hover:border-[#C89B3C]/50"
             >
-
-              {/* Image */}
-
               <div className="relative h-52 overflow-hidden">
-
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
                   className="object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
-
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-
-                <span className="absolute top-5 left-5 bg-[#C89B3C] text-black text-xs font-semibold px-4 py-2 rounded-full">
+                <span className="absolute left-5 top-5 rounded-full bg-[#C89B3C] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black">
                   {project.tag}
                 </span>
-
               </div>
 
-              {/* Content */}
+              <div className="p-6 sm:p-6">
+                <h3 className="text-2xl font-semibold text-white">{project.title}</h3>
 
-              <div className="p-5">
-
-                <h3 className="text-3xl font-bold">
-                  {project.title}
-                </h3>
-
-                <div className="flex items-center gap-2 mt-3 text-gray-400">
-
-                  <MapPin size={16} />
-
+                <div className="mt-3 flex items-center gap-2 text-gray-400">
+                  <MapPin size={16} className="text-[#C89B3C]" />
                   <span>{project.location}</span>
-
                 </div>
 
-                {/* Price */}
-
-                <div className="mt-6">
-
+                <div className="mt-5">
                   {project.price.includes("ROI") ? (
-                    <p className="text-2xl font-bold text-[#C89B3C]">
-                      {project.price}
-                    </p>
+                    <p className="text-2xl font-semibold text-[#C89B3C]">{project.price}</p>
                   ) : (
                     <>
-                      <p className="text-xs uppercase tracking-[3px] text-gray-500">
-                        Starting From
-                      </p>
-
-                      <p className="text-3xl font-bold text-[#C89B3C] mt-1">
-                        {project.price}
-                      </p>
+                      <p className="text-[11px] uppercase tracking-[0.3em] text-gray-500">Starting From</p>
+                      <p className="mt-1 text-3xl font-semibold text-[#C89B3C]">{project.price}</p>
                     </>
                   )}
-
                 </div>
 
-                <button className="mt-8 bg-[#C89B3C] text-black px-7 py-3.5 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(200,155,60,0.45)]">
-                    View Details
+                <button type="button" className="button-primary mt-6 w-full sm:w-auto">
+                  View Details
                 </button>
-
               </div>
-
-            </div>
-
+            </article>
           ))}
-
         </div>
-
       </div>
     </section>
   );
