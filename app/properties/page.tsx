@@ -1,5 +1,6 @@
 import Hero from "@/app/properties/Hero";
 import Filters from "@/app/properties/Filters";
+import PropertyGrid from "./PropertyGrid";
 
 export default function PropertiesPage() {
   return (
@@ -8,6 +9,7 @@ export default function PropertiesPage() {
       {/* Hero Section */}
       <Hero />
       <Filters />
+      <PropertyGrid />
 
      {/* Filters */}
 
