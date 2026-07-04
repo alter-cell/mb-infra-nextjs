@@ -7,9 +7,9 @@ export default function Stats() {
   ];
 
   return (
-    <section className="bg-[#111318] section-shell">
+    <section className="bg-[color:var(--section)] section-shell">
       <div className="container-shell">
-        <div className="mx-auto mb-8 max-w-3xl text-center">
+        <div className="mx-auto mb-10 max-w-3xl text-center">
           <p className="section-label">Our Legacy</p>
           <h2 className="section-title mt-3">Our Legacy in Numbers</h2>
           <p className="section-copy mt-3">
@@ -21,11 +21,11 @@ export default function Stats() {
           {stats.map((item) => (
             <div
               key={item.number}
-              className="card-surface p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-[#C89B3C]/50"
+              className="card-surface p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-[color:var(--primary)]/20"
             >
-              <h3 className="text-4xl font-semibold text-[#C89B3C] sm:text-5xl">{item.number}</h3>
-              <p className="mt-3 text-2xl font-semibold text-white">{item.title}</p>
-              <p className="mt-1 text-sm text-gray-400">{item.subtitle}</p>
+              <h3 className="text-4xl font-semibold text-[color:var(--accent)] sm:text-5xl">{item.number}</h3>
+              <p className="mt-3 text-2xl font-semibold text-[color:var(--heading)]">{item.title}</p>
+              <p className="mt-1 text-sm text-[color:var(--body)]">{item.subtitle}</p>
             </div>
           ))}
         </div>

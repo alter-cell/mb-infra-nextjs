@@ -31,129 +31,81 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 z-50 w-full transition-all duration-500 ${
           scrolled
-            ? "bg-black/80 backdrop-blur-xl shadow-2xl"
+            ? "border-b border-[color:var(--border)] bg-[color:var(--surface)]/90 shadow-[0_18px_55px_rgba(15,23,42,0.10)] backdrop-blur-2xl"
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-[1440px] mx-auto px-8 lg:px-12 py-5 flex items-center justify-between">
-
-          {/* Logo */}
-
+        <div className="mx-auto flex max-w-[1440px] items-center justify-between px-6 py-4 sm:px-8 lg:px-12 lg:py-5">
           <Link href="/" className="flex items-center gap-3">
-            <Image
-              src="/logo/mb-logo.png"
-              alt="MB Infra"
-              width={48}
-              height={48}
-              priority
-            />
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_10px_30px_rgba(15,23,42,0.08)]">
+              <Image
+                src="/logo/mb-logo.png"
+                alt="MB Infra"
+                width={34}
+                height={34}
+                priority
+              />
+            </div>
 
             <div>
-              <h1 className="text-2xl font-extrabold tracking-wide text-white">
+              <h1 className="text-xl font-extrabold tracking-[0.22em] text-[color:var(--heading)] sm:text-2xl">
                 MB INFRA
               </h1>
 
-              <p className="text-[10px] uppercase tracking-[3px] text-[#C89B3C]">
+              <p className="text-[10px] uppercase tracking-[0.35em] text-[color:var(--accent)]">
                 BUILDING TRUST
               </p>
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-
-          <ul className="hidden lg:flex items-center gap-10 text-white">
+          <ul className="hidden items-center gap-8 lg:flex">
             {navItems.map((item) => (
-              <li key={item.name} className="relative group">
+              <li key={item.name} className="group relative">
                 <Link href={item.href}>
-                  <span className="cursor-pointer transition duration-300 group-hover:text-[#C89B3C] group-hover:drop-shadow-[0_0_8px_rgba(200,155,60,0.7)]">
+                  <span className="cursor-pointer text-[15px] font-medium text-[color:var(--heading)] transition duration-300 group-hover:text-[color:var(--primary)]">
                     {item.name}
                   </span>
                 </Link>
 
-                <span
-                  className="
-                    absolute
-                    left-0
-                    -bottom-2
-                    h-[2px]
-                    w-0
-                    bg-[#C89B3C]
-                    transition-all
-                    duration-300
-                    group-hover:w-full
-                  "
-                />
+                <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-[color:var(--primary)] transition-all duration-300 group-hover:w-full" />
               </li>
             ))}
           </ul>
 
-          {/* Right Side */}
-
-          <div className="flex items-center gap-4">
-
-            <button
-              className="
-                hidden
-                lg:block
-                bg-[#C89B3C]
-                text-black
-                px-6
-                py-3
-                rounded-xl
-                font-semibold
-                transition-all
-                duration-300
-                hover:scale-105
-                hover:shadow-[0_0_30px_rgba(200,155,60,.45)]
-              "
-            >
+          <div className="flex items-center gap-3">
+            <button className="hidden rounded-full bg-[color:var(--primary)] px-5 py-3 text-sm font-semibold text-white shadow-[0_12px_35px_rgba(37,99,235,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[color:var(--primary-hover)] lg:block">
               Schedule Site Visit
             </button>
 
             <button
-              className="lg:hidden text-white"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-[color:var(--border)] bg-[color:var(--surface)] text-[color:var(--heading)] shadow-[0_10px_30px_rgba(15,23,42,0.08)] lg:hidden"
               onClick={() => setMobileOpen(!mobileOpen)}
             >
-              {mobileOpen ? <X size={30} /> : <Menu size={30} />}
+              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
-
           </div>
         </div>
       </nav>
 
-      {/* Mobile Menu */}
-
       {mobileOpen && (
-        <div className="fixed top-[82px] left-0 w-full bg-black/95 backdrop-blur-xl z-40 lg:hidden">
-
-          <div className="flex flex-col p-8 gap-6 text-white text-lg">
-
+        <div className="fixed left-0 top-[74px] z-40 w-full border-b border-[color:var(--border)] bg-[color:var(--surface)]/95 backdrop-blur-2xl shadow-[0_18px_55px_rgba(15,23,42,0.10)] lg:hidden">
+          <div className="flex flex-col gap-5 p-6 text-lg">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="hover:text-[#C89B3C] transition"
+                className="text-[color:var(--heading)] transition hover:text-[color:var(--primary)]"
                 onClick={() => setMobileOpen(false)}
               >
                 {item.name}
               </Link>
             ))}
 
-            <button
-              className="
-                mt-4
-                bg-[#C89B3C]
-                text-black
-                py-4
-                rounded-xl
-                font-semibold
-              "
-            >
+            <button className="mt-2 rounded-full bg-[color:var(--primary)] px-5 py-3 text-sm font-semibold text-white shadow-[0_12px_35px_rgba(37,99,235,0.25)]">
               Schedule Site Visit
             </button>
-
           </div>
         </div>
       )}

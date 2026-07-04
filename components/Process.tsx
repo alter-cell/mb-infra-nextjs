@@ -30,9 +30,9 @@ const steps = [
 
 export default function Process() {
   return (
-    <section className="bg-[#0F1115] text-white section-shell">
+    <section className="bg-[color:var(--section)] section-shell">
       <div className="container-shell">
-        <div className="mx-auto mb-8 max-w-3xl text-center">
+        <div className="mx-auto mb-10 max-w-3xl text-center">
           <p className="section-label">Our Process</p>
           <h2 className="section-title mt-3">Building Made Simple</h2>
           <p className="section-copy mt-3">
@@ -46,16 +46,16 @@ export default function Process() {
 
             return (
               <div key={step.title} className="group text-center">
-                <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full border border-white/10 bg-[#171A20] transition-all duration-300 group-hover:bg-[#C89B3C]">
-                  <Icon size={32} className="text-[#C89B3C] transition-all group-hover:text-black" />
+                <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_16px_40px_rgba(15,23,42,0.06)] transition-all duration-300 group-hover:border-[color:var(--primary)]/20 group-hover:bg-[color:var(--primary)]/10">
+                  <Icon size={32} className="text-[color:var(--primary)] transition-all group-hover:text-[color:var(--primary)]" />
                 </div>
 
-                <div className="mx-auto mt-5 flex h-8 w-8 items-center justify-center rounded-full bg-[#C89B3C] text-sm font-bold text-black">
+                <div className="mx-auto mt-5 flex h-8 w-8 items-center justify-center rounded-full bg-[color:var(--primary)] text-sm font-bold text-white">
                   {index + 1}
                 </div>
 
-                <h3 className="mt-4 text-xl font-semibold text-white">{step.title}</h3>
-                <p className="mt-2 leading-7 text-gray-400">{step.desc}</p>
+                <h3 className="mt-4 text-xl font-semibold text-[color:var(--heading)]">{step.title}</h3>
+                <p className="mt-2 leading-7 text-[color:var(--body)]">{step.desc}</p>
               </div>
             );
           })}

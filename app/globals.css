@@ -1,24 +1,43 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0f1115;
-  --foreground: #f5f5f5;
+  --background: #f8fafc;
+  --surface: #ffffff;
+  --section: #eef4f7;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --secondary: #16a34a;
+  --secondary-hover: #15803d;
+  --accent: #d4af37;
+  --heading: #0f172a;
+  --body: #475569;
+  --border: #e2e8f0;
+  --foreground: var(--heading);
+  --shadow-soft: 0 18px 55px rgba(15, 23, 42, 0.08);
+  --shadow-card: 0 20px 60px rgba(15, 23, 42, 0.08);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
 body {
   margin: 0;
-  background: var(--background);
+  background:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.07), transparent 28%),
+    linear-gradient(135deg, #f8fafc 0%, #f8fafc 100%);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   min-height: 100vh;
@@ -28,8 +47,13 @@ body {
 }
 
 ::selection {
-  background: rgba(200, 155, 60, 0.35);
-  color: #ffffff;
+  background: rgba(37, 99, 235, 0.2);
+  color: var(--heading);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 @layer components {
@@ -38,30 +62,125 @@ body {
   }
 
   .section-shell {
-    @apply py-14 sm:py-16 lg:py-16;
+    @apply py-14 sm:py-16 lg:py-20;
   }
 
   .section-label {
-    @apply text-[11px] font-semibold uppercase tracking-[0.35em] text-[#C89B3C];
+    @apply text-[11px] font-semibold uppercase tracking-[0.35em] text-[color:var(--primary)];
   }
 
   .section-title {
-    @apply text-3xl font-semibold tracking-[-0.02em] text-white sm:text-4xl lg:text-5xl;
+    @apply text-3xl font-semibold tracking-[-0.02em] text-[color:var(--heading)] sm:text-4xl lg:text-5xl;
   }
 
   .section-copy {
-    @apply text-base leading-8 text-gray-400 sm:text-lg;
+    @apply text-base leading-8 text-[color:var(--body)] sm:text-lg;
   }
 
   .card-surface {
-    @apply rounded-[24px] border border-white/10 bg-[#171A20] shadow-[0_18px_60px_rgba(0,0,0,0.2)];
+    @apply rounded-[24px] border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_18px_60px_rgba(15,23,42,0.08)];
   }
 
   .button-primary {
-    @apply inline-flex items-center justify-center rounded-full bg-[#C89B3C] px-6 py-3.5 text-sm font-semibold text-black transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_15px_35px_rgba(200,155,60,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C89B3C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0F1115];
+    @apply inline-flex items-center justify-center rounded-full bg-[color:var(--primary)] px-6 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[color:var(--primary-hover)] hover:shadow-[0_15px_35px_rgba(37,99,235,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)];
   }
 
   .button-secondary {
-    @apply inline-flex items-center justify-center rounded-full border border-[#C89B3C] px-6 py-3.5 text-sm font-semibold text-[#C89B3C] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#C89B3C] hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C89B3C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0F1115];
+    @apply inline-flex items-center justify-center rounded-full border border-[color:var(--border)] px-6 py-3.5 text-sm font-semibold text-[color:var(--primary)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[color:var(--primary)] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)];
   }
+}
+
+@layer utilities {
+  .surface-section {
+    background-color: var(--section);
+  }
+
+  .surface-card {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-card);
+  }
+
+  .text-heading {
+    color: var(--heading);
+  }
+
+  .text-body {
+    color: var(--body);
+  }
+
+  .text-accent {
+    color: var(--accent);
+  }
+
+  .text-primary {
+    color: var(--primary);
+  }
+
+  .text-secondary {
+    color: var(--secondary);
+  }
+
+  .border-soft {
+    border-color: var(--border);
+  }
+}
+
+.bg-\[\#0F1115\],
+.bg-\[\#111318\],
+.bg-\[\#0B0D11\] {
+  background-color: var(--background) !important;
+}
+
+.bg-\[\#171A20\],
+.bg-\[\#111827\/85\] {
+  background-color: var(--surface) !important;
+}
+
+.bg-black\/80,
+.bg-black\/95,
+.bg-black\/75,
+.bg-black\/85 {
+  background-color: rgba(15, 23, 42, 0.92) !important;
+}
+
+.text-white {
+  color: var(--heading) !important;
+}
+
+.text-gray-400,
+.text-gray-500,
+.text-gray-600 {
+  color: var(--body) !important;
+}
+
+.text-\[\#C89B3C\] {
+  color: var(--accent) !important;
+}
+
+.bg-\[\#C89B3C\] {
+  background-color: var(--accent) !important;
+}
+
+.border-\[\#C89B3C\] {
+  border-color: var(--accent) !important;
+}
+
+.border-white\/10,
+.border-white\/20,
+.border-white\/30,
+.border-white\/5 {
+  border-color: var(--border) !important;
+}
+
+.hover\:border-\[\#C89B3C\]:hover {
+  border-color: var(--accent) !important;
+}
+
+.hover\:text-\[\#C89B3C\]:hover {
+  color: var(--accent) !important;
+}
+
+.hover\:bg-\[\#C89B3C\]:hover {
+  background-color: var(--accent) !important;
 }

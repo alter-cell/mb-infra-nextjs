@@ -27,9 +27,9 @@ const projects = [
 
 export default function FeaturedProjects() {
   return (
-    <section id="projects" className="bg-[#0F1115] text-white section-shell">
+    <section id="projects" className="bg-[color:var(--section)] section-shell">
       <div className="container-shell">
-        <div className="mx-auto mb-8 max-w-3xl text-center">
+        <div className="mx-auto mb-10 max-w-3xl text-center">
           <p className="section-label">Featured Projects</p>
           <h2 className="section-title mt-3">Discover Your Next Investment</h2>
           <p className="section-copy mt-3">
@@ -41,7 +41,7 @@ export default function FeaturedProjects() {
           {projects.map((project) => (
             <article
               key={project.title}
-              className="group overflow-hidden rounded-[28px] border border-white/10 bg-[#171A20] shadow-[0_18px_60px_rgba(0,0,0,0.2)] transition-all duration-500 hover:-translate-y-1 hover:border-[#C89B3C]/50"
+              className="group overflow-hidden rounded-[28px] border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_20px_60px_rgba(15,23,42,0.08)] transition-all duration-500 hover:-translate-y-1 hover:border-[color:var(--primary)]/20"
             >
               <div className="relative h-52 overflow-hidden">
                 <Image
@@ -50,27 +50,27 @@ export default function FeaturedProjects() {
                   fill
                   className="object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-                <span className="absolute left-5 top-5 rounded-full bg-[#C89B3C] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black">
+                <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--heading)]/70 via-[color:var(--heading)]/10 to-transparent" />
+                <span className="absolute left-5 top-5 rounded-full bg-[color:var(--accent)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--heading)]">
                   {project.tag}
                 </span>
               </div>
 
               <div className="p-6 sm:p-6">
-                <h3 className="text-2xl font-semibold text-white">{project.title}</h3>
+                <h3 className="text-2xl font-semibold text-[color:var(--heading)]">{project.title}</h3>
 
-                <div className="mt-3 flex items-center gap-2 text-gray-400">
-                  <MapPin size={16} className="text-[#C89B3C]" />
+                <div className="mt-3 flex items-center gap-2 text-[color:var(--body)]">
+                  <MapPin size={16} className="text-[color:var(--primary)]" />
                   <span>{project.location}</span>
                 </div>
 
                 <div className="mt-5">
                   {project.price.includes("ROI") ? (
-                    <p className="text-2xl font-semibold text-[#C89B3C]">{project.price}</p>
+                    <p className="text-2xl font-semibold text-[color:var(--primary)]">{project.price}</p>
                   ) : (
                     <>
-                      <p className="text-[11px] uppercase tracking-[0.3em] text-gray-500">Starting From</p>
-                      <p className="mt-1 text-3xl font-semibold text-[#C89B3C]">{project.price}</p>
+                      <p className="text-[11px] uppercase tracking-[0.3em] text-[color:var(--body)]">Starting From</p>
+                      <p className="mt-1 text-3xl font-semibold text-[color:var(--primary)]">{project.price}</p>
                     </>
                   )}
                 </div>
