@@ -236,7 +236,7 @@ export default function Navbar() {
 
           {/* Core Structural Drawer Content Scroller Navigation Links */}
           <nav className="flex-1 overflow-y-auto px-4 py-6" aria-label="Mobile Drawer Navigation">
-            <ul className="space-y-1.5">
+            <ul className="space-y-2">
               {navItems.map((item) => {
                 const IconComponent = item.icon;
                 const isActive = pathname === item.href;
@@ -247,14 +247,14 @@ export default function Navbar() {
                       onClick={closeDrawer}
                       className={`group flex min-h-[52px] w-full items-center justify-between rounded-xl px-4 py-3 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00C853] ${
                         isActive
-                          ? "bg-[#00C853]/10 text-[#00C853]"
-                          : "text-white/90 hover:bg-white/5 hover:text-[#00C853]"
+                          ? "bg-[#00C853]/15 text-[#00C853]"
+                          : "text-white hover:bg-white/5 hover:text-[#00C853]"
                       }`}
                     >
                       <div className="flex items-center gap-3.5">
                         <IconComponent
                           className={`h-5 w-5 transition-transform duration-200 group-hover:scale-110 ${
-                            isActive ? "text-[#00C853]" : "text-white/50 group-hover:text-[#00C853]"
+                            isActive ? "text-[#00C853]" : "text-white/70 group-hover:text-[#00C853]"
                           }`}
                         />
                         <span className="text-base font-semibold tracking-wide">
@@ -263,7 +263,7 @@ export default function Navbar() {
                       </div>
                       <ChevronRight
                         className={`h-4 w-4 transition-transform duration-200 will-change-transform group-hover:translate-x-0.5 ${
-                          isActive ? "text-[#00C853]" : "text-white/30 group-hover:text-[#00C853]"
+                          isActive ? "text-[#00C853]" : "text-white/40 group-hover:text-[#00C853]"
                         }`}
                       />
                     </Link>
@@ -274,11 +274,11 @@ export default function Navbar() {
           </nav>
 
           {/* Intermediate Action CTA Controls Block Layout */}
-          <div className="border-t border-white/10 bg-slate-950/20 px-6 py-6 space-y-3">
+          <div className="border-t border-white/10 bg-slate-950/40 px-6 py-6 space-y-3">
             <Link
               href="/schedule"
               onClick={closeDrawer}
-              className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl bg-[#00C853] px-4 py-3 text-center text-sm font-semibold uppercase tracking-wider text-slate-950 shadow-[0_12px_30px_rgba(0,200,83,0.2)] transition-transform duration-150 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00C853]"
+              className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl bg-[#00C853] px-4 py-3 text-center text-sm font-bold uppercase tracking-wider text-slate-950 shadow-[0_12px_30px_rgba(0,200,83,0.25)] transition-transform duration-150 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00C853]"
             >
               <Calendar className="h-4 w-4" />
               Schedule Site Visit
@@ -287,22 +287,22 @@ export default function Navbar() {
             <Link
               href="/#contact"
               onClick={closeDrawer}
-              className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-center text-sm font-semibold uppercase tracking-wider text-white transition-all duration-200 hover:border-white/40 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-center text-sm font-semibold uppercase tracking-wider text-white transition-all duration-200 hover:border-white/60 hover:bg-white/10 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
             >
-              <Phone className="h-4 w-4 text-white/70" />
+              <Phone className="h-4 w-4 text-white/90" />
               Call Our Experts
             </Link>
           </div>
 
           {/* Premium Bottom Context Info & Footer Metadata Status Details */}
-          <div className="border-t border-white/10 bg-slate-950/50 p-6 text-white">
+          <div className="border-t border-white/10 bg-slate-950/60 p-6 text-white">
             <div className="flex items-start justify-between gap-4">
               {/* Regional Office Coordinates */}
               <div className="space-y-1">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-[#00C853]">
                   Office
                 </span>
-                <p className="flex items-center gap-1.5 text-xs font-light text-white/80">
+                <p className="flex items-center gap-1.5 text-xs font-light text-white/90">
                   <MapPin className="h-3 w-3 text-[#00C853]" />
                   Dehradun, Uttarakhand
                 </p>
@@ -321,7 +321,7 @@ export default function Navbar() {
             </div>
 
             {/* Micro Tagline Details Subtext */}
-            <div className="mt-6 flex flex-wrap gap-x-3 gap-y-1 border-t border-white/5 pt-4 text-[10px] font-medium uppercase tracking-wider text-white/40">
+            <div className="mt-6 flex flex-wrap gap-x-3 gap-y-1 border-t border-white/5 pt-4 text-[10px] font-medium uppercase tracking-wider text-white/50">
               <span>Premium Construction</span>
               <span>•</span>
               <span>Luxury Real Estate</span>
