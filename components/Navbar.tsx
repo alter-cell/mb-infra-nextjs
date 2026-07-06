@@ -145,14 +145,18 @@ export default function Navbar() {
 
         <div className="absolute right-0 top-0 h-screen w-[88%] max-w-[380px] bg-[#081C3A] px-8 py-24 shadow-[0_30px_80px_rgba(0,0,0,.45)]">
 
-          <div className="flex flex-col gap-8">
+          <div className="flex flflex flex-col gap-7 pt-3ex-col gap-8">
 
         {navItems.map((item) => (
   <Link
-    key={item.name}
+    key={item.name}<div className="flex items-center gap-3">
+  <span className="h-2 w-2 rounded-full bg-[#00C853]" />
+  {item.name}
+</div>
+
     href={item.href}
     onClick={() => setMobileOpen(false)}
-    className="border-b border-white/10 pb-5 text-xl font-medium text-white transition-all duration-300 hover:translate-x-2 hover:text-[#00C853]"
+    className="border-b border-white/10 pb-5 text-xl foclassName="border-b border-white/10 pb-5 text-[22px] font-semibold tracking-wide text-white transition-all duration-300 hover:translate-x-2 hover:text-[#00C853]" nt-medium text-white transition-all duration-300 hover:translate-x-2 hover:text-[#00C853]"
   >
     {item.name}
   </Link>
@@ -165,7 +169,7 @@ export default function Navbar() {
   Schedule Site Visit
 </button>
 
-<p className="mt-8 border-t border-white/10 pt-8 text-sm leading-7 text-slate-400">
+<p className="mt-12 border-t border-white/10 pt-8 text-sm leading-7 text-slate-400">
   Premium Construction
   <br />
   Luxury Real Estate
