@@ -139,7 +139,7 @@ export default function Navbar() {
                         isActive ? "w-full" : "w-0 group-hover:w-full"
                       }`}
                     />
-                  </td>
+                  </li>
                 );
               })}
             </ul>
@@ -267,7 +267,7 @@ export default function Navbar() {
                         }`}
                       />
                     </Link>
-                  </td>
+                  </li>
                 );
               })}
             </ul>
