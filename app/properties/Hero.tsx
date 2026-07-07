@@ -1,91 +1,51 @@
-"use client";
+import React from "react";
+import Image from "next/image";
 
-import React, { useState } from "react";
-import Hero from "@/app/properties/Hero";
-import PropertyGrid from "./PropertyGrid";
-import { ChevronDown, Search } from "lucide-react";
-
-export default function PropertiesPage() {
-  // State management for custom UI dropdown panels
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-
-  const toggleDropdown = (name: string) => {
-    setActiveDropdown(activeDropdown === name ? null : name);
-  };
-
+export default function Hero() {
   return (
-    // Realigned background shell to the official Light Gray supporting palette color
-    <main className="min-h-screen bg-[#F5F7FA] text-[#111827] antialiased selection:bg-[#43C86B]/20">
+    <section className="relative w-full min-h-[60vh] sm:min-h-[65vh] lg:min-h-[70vh] flex items-center justify-start overflow-hidden bg-[#0B1F4D]">
       
-      {/* 50% Visual Presence: Deep Navy Cinematic Hero Segment */}
-      <Hero />
-
-      {/* 10% Action Accent Layer: Luxury Filter Search Bar System */}
-      <section className="max-w-[1400px] mx-auto px-6 sm:px-8 -mt-12 relative z-20">
-        <div className="bg-[#FFFFFF] border border-[#E5E7EB] rounded-xl p-4 shadow-xl shadow-[#0B1F4D]/5">
-          <div className="grid gap-3 lg:grid-cols-[1.5fr_1fr_1fr_1fr_auto]">
-            
-            {/* Search Input Box */}
-            <div className="relative flex items-center">
-              <Search className="absolute left-4 w-4 h-4 text-[#6B7280]/60 pointer-events-none" />
-              <input
-                type="text"
-                placeholder="Search estates (e.g., Mussoorie Villa)..."
-                className="w-full bg-[#F5F7FA] text-[#111827] placeholder-[#6B7280]/60 border border-[#E5E7EB] rounded-lg pl-11 pr-4 py-3.5 text-sm tracking-wide outline-none focus:border-[#0B1F4D]/40 transition-all duration-500 ease-out"
-              />
-            </div>
-
-            {/* Property Type Custom Dropdown Selector Toggle */}
-            <div className="relative">
-              <button 
-                onClick={() => toggleDropdown("type")}
-                className="w-full bg-[#F5F7FA] border border-[#E5E7EB] rounded-lg px-4 py-3.5 text-sm tracking-wide text-left text-[#6B7280] flex items-center justify-between hover:border-[#6B7280]/40 transition-all duration-300"
-              >
-                <span className="text-[#111827] font-medium">All Types</span>
-                <ChevronDown className={`w-3.5 h-3.5 text-[#6B7280] transition-transform duration-300 ${activeDropdown === "type" ? "rotate-180" : ""}`} />
-              </button>
-            </div>
-
-            {/* Budget Custom Dropdown Selector Toggle */}
-            <div className="relative">
-              <button 
-                onClick={() => toggleDropdown("budget")}
-                className="w-full bg-[#F5F7FA] border border-[#E5E7EB] rounded-lg px-4 py-3.5 text-sm tracking-wide text-left text-[#6B7280] flex items-center justify-between hover:border-[#6B7280]/40 transition-all duration-300"
-              >
-                <span className="text-[#111827] font-medium">Budget Range</span>
-                <ChevronDown className={`w-3.5 h-3.5 text-[#6B7280] transition-transform duration-300 ${activeDropdown === "budget" ? "rotate-180" : ""}`} />
-              </button>
-            </div>
-
-            {/* Location Custom Dropdown Selector Toggle */}
-            <div className="relative">
-              <button 
-                onClick={() => toggleDropdown("location")}
-                className="w-full bg-[#F5F7FA] border border-[#E5E7EB] rounded-lg px-4 py-3.5 text-sm tracking-wide text-left text-[#6B7280] flex items-center justify-between hover:border-[#6B7280]/40 transition-all duration-300"
-              >
-                <span className="text-[#111827] font-medium">Select Location</span>
-                <ChevronDown className={`w-3.5 h-3.5 text-[#6B7280] transition-transform duration-300 ${activeDropdown === "location" ? "rotate-180" : ""}`} />
-              </button>
-            </div>
-
-            {/* Sophisticated Search Action CTA Button aligned to official Brand Palette */}
-            <button className="relative overflow-hidden group bg-[#0B1F4D] border border-transparent text-white font-bold tracking-widest text-xs uppercase rounded-lg px-9 py-3.5 transition-all duration-500 ease-out shadow-md shadow-[#0B1F4D]/10 hover:shadow-lg">
-              {/* Sliding background interaction layer using active Emerald Green */}
-              <span className="absolute inset-0 w-full h-full bg-[#43C86B] transform scale-x-0 origin-left transition-transform duration-500 ease-out group-hover:scale-x-100 z-0" />
-              {/* Label text positioned cleanly above the slider layer */}
-              <span className="relative z-10 transition-colors duration-500 ease-out">
-                Discover
-              </span>
-            </button>
-
-          </div>
-        </div>
-      </section>
-
-      {/* 35% Pure Luxury Contrast: Property Display Grid Area */}
-      <div className="pt-8 pb-24">
-        <PropertyGrid />
+      {/* 1. Cinematic Background Layer: Optimized Photography Mesh */}
+      <div className="absolute inset-0 z-0 bg-[#0B1F4D]">
+        <Image
+          src="/images/hero-architecture.jpg" // Ensure you replace this with high-end architecture photography
+          alt="Mount Build Infrastructure Premium Portfolio"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center opacity-45 mix-blend-luminosity scale-[1.01] transition-transform duration-[3000ms] ease-out"
+        />
+        {/* Subtle Brand Linear Mask: Restrained gradient framework for text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1F4D]/90 via-[#0B1F4D]/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F4D] via-transparent to-transparent h-1/3 bottom-0" />
       </div>
-    </main>
+
+      {/* 2. Structural Typography Box: Aligned to Editorial Lookbook Layouts */}
+      <div className="relative z-10 max-w-[1400px] w-full mx-auto px-6 sm:px-8 pt-12 pb-24 sm:pb-32">
+        <div className="max-w-3xl space-y-6">
+          
+          {/* Micro Tag: Tracking Signal for Craftsmanship */}
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#43C86B] animate-pulse" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/80">
+              Mount Build Infrastructure
+            </span>
+          </div>
+
+          {/* Core Brand Headline[cite: 1] */}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1]">
+            Engineering Excellence <br />
+            <span className="text-white/60 font-light italic">In The Himalayas</span>
+          </h1>
+
+          {/* Subtitle Description Copy: Clear Reading Rhythm[cite: 1] */}
+          <p className="text-base sm:text-lg text-white/70 max-w-xl font-normal leading-relaxed">
+            Discover architectural precision, structural craftsmanship, and ultra-premium real estate investment structures built to deliver long-term legacy value across Dehradun and Mussoorie[cite: 1].
+          </p>
+
+        </div>
+      </div>
+
+    </section>
   );
 }
