@@ -10,49 +10,83 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="process" className="relative overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,#f7fbff_45%,#eef8ff_100%)] py-24">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(13,79,216,.08),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(0,200,83,.08),transparent_30%)]"/>
-      <div className="container-shell relative">
+    // 1. Unified Background System: White canvas with soft sky-blue ambient gradient
+    <section 
+      id="process" 
+      className="relative overflow-hidden bg-[#FFFFFF] py-[100px] sm:py-[120px]"
+    >
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(110,198,255,0.05),transparent_40%)] pointer-events-none" />
+      
+      <div className="container-shell relative z-10">
+        
+        {/* Section Header Track */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#00C853]/20 bg-[#00C853]/10 px-5 py-2">
-            <Sparkles className="h-4 w-4 text-[#00C853]"/>
-            <span className="text-xs font-semibold tracking-[0.3em] uppercase text-[#00C853]">OUR PROCESS</span>
+          <div className="inline-flex items-center gap-2 rounded-brand-badge border border-brand-emerald/20 bg-brand-emerald/10 px-4 py-1.5">
+            <Sparkles className="h-3.5 w-3.5 text-brand-emerald" />
+            <span className="text-[11px] font-bold tracking-[0.25em] uppercase text-brand-emerald">OUR PROCESS</span>
           </div>
-          <h2 className="mt-6 text-5xl font-bold tracking-tight text-slate-900">From Vision to <span className="text-[#00C853]">Reality</span></h2>
-          <p className="mt-6 text-lg leading-8 text-slate-600">A transparent journey designed to keep every client informed from the first meeting to the final handover.</p>
+          <h2 className="mt-6 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-brand-heading">
+            From Vision to <span className="text-brand-emerald">Reality</span>
+          </h2>
+          <p className="mt-4 text-sm sm:text-base text-brand-body max-w-2xl mx-auto leading-relaxed">
+            A transparent journey designed to keep every client informed from the first meeting to the final handover.
+          </p>
         </div>
 
+        {/* Process Steps Track Layout */}
         <div className="relative mt-20">
-          <div className="absolute left-0 right-0 top-10 hidden h-[2px] bg-gradient-to-r from-[#00C853] via-[#0D3B7A]/30 to-[#00C853] xl:block"/>
+          {/* Timeline Connector Line using restrained brand elements */}
+          <div className="absolute left-0 right-0 top-10 hidden h-[2px] bg-gradient-to-r from-brand-emerald via-brand-navy/10 to-brand-emerald xl:block" />
+          
           <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-5">
-            {steps.map((step,index)=>{
-              const Icon=step.icon;
+            {steps.map((step, index) => {
+              const Icon = step.icon;
               return (
-                <div key={step.title} className="group relative rounded-[28px] border border-slate-200 bg-white p-8 text-center shadow-[0_20px_60px_rgba(15,23,42,.06)] transition-all duration-500 hover:-translate-y-3 hover:border-[#00C853]/40 hover:shadow-[0_30px_80px_rgba(13,59,122,.12)]">
-                  <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#00C853]/10 text-[#00C853] transition-all duration-300 group-hover:rotate-6 group-hover:bg-[#00C853] group-hover:text-white">
-                    <Icon size={34}/>
+                <div 
+                  key={step.title} 
+                  className="group relative rounded-brand-card border border-slate-200/60 bg-white p-6 sm:p-8 text-center shadow-brand-luxury transition-all duration-500 ease-out hover:-translate-y-2 hover:border-brand-emerald/40 transform-gpu"
+                >
+                  {/* Icon Indicator Circle */}
+                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-brand-emerald/10 text-brand-emerald transition-all duration-300 group-hover:bg-brand-emerald group-hover:text-white shadow-sm">
+                    <Icon size={26} className="stroke-[2]" />
                   </div>
-                  <div className="mx-auto mt-6 flex h-10 w-10 items-center justify-center rounded-full bg-[#0D3B7A] font-bold text-white ring-8 ring-[#0D3B7A]/10">{index+1}</div>
-                  <h3 className="mt-6 text-xl font-semibold text-slate-900">{step.title}</h3>
-                  <p className="mt-3 leading-7 text-slate-600">{step.desc}</p>
+                  
+                  {/* Step Number Circle Token */}
+                  <div className="mx-auto mt-6 flex h-8 w-8 items-center justify-center rounded-full bg-brand-navy font-bold text-xs text-white ring-4 ring-brand-navy/10">
+                    {index + 1}
+                  </div>
+                  
+                  <h3 className="mt-4 text-lg font-bold text-brand-heading">{step.title}</h3>
+                  <p className="mt-2 text-xs sm:text-sm leading-relaxed text-brand-body">{step.desc}</p>
                 </div>
               );
             })}
           </div>
         </div>
 
-        <div className="mt-20 rounded-[32px] bg-gradient-to-r from-[#081C3A] via-[#0D3B7A] to-[#081C3A] p-[1px]">
-          <div className="flex flex-col items-center justify-between gap-6 rounded-[31px] bg-[#081C3A] px-10 py-10 lg:flex-row">
-            <div>
-              <h3 className="text-3xl font-bold text-white">Ready to Start Your Project?</h3>
-              <p className="mt-3 max-w-2xl text-slate-300">Let's discuss your vision and build something that lasts for generations.</p>
+        {/* Premium CTA Invitation Block: Dark Section Deep Navy Surface */}
+        <div className="mt-20 overflow-hidden rounded-brand-card bg-brand-navy border border-white/[0.06] shadow-2xl">
+          <div className="surface-dark-section flex flex-col items-center justify-between gap-6 px-8 py-8 sm:px-10 sm:py-10 lg:flex-row">
+            <div className="text-left w-full lg:w-auto">
+              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+                Ready to Start Your Project?
+              </h3>
+              <p className="mt-2 text-sm text-slate-300 max-w-xl">
+                Let's discuss your vision and build something that lasts for generations.
+              </p>
             </div>
-            <a href="#contact" className="group inline-flex items-center gap-2 rounded-xl bg-[#00C853] px-8 py-4 font-semibold text-white shadow-[0_18px_45px_rgba(0,200,83,.35)] transition-all hover:-translate-y-1">
-              Schedule a Consultation
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1"/>
+            
+            {/* Unified Button Component: Emerald Green 18px Radius[cite: 1] */}
+            <a 
+              href="#contact" 
+              className="button-primary group w-full lg:w-auto inline-flex items-center justify-center gap-2 rounded-brand-interactive"
+            >
+              <span>Schedule a Consultation</span>
+              <ArrowRight className="h-4 w-4 stroke-[2.5] transition-transform duration-300 group-hover:translate-x-1" />
             </a>
           </div>
         </div>
+
       </div>
     </section>
   );

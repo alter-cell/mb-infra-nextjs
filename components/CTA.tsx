@@ -3,71 +3,85 @@ import { ArrowRight, Sparkles, Phone } from "lucide-react";
 
 export default function CTA() {
   return (
-    <section id="contact" className="relative isolate overflow-hidden py-24">
-      <Image
-        src="/images/cta.jpg"
-        alt="MB Infra luxury development"
-        fill
-        priority
-        className="object-cover scale-105"
-      />
-
-      <div className="absolute inset-0 bg-[#081C3A]/80" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,200,83,.18),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(13,79,216,.20),transparent_35%)]" />
+    // 1. Unified Background System: Deep Navy overlay gradient matrix with atmospheric Asmani Blue glow
+    <section
+      id="cta-section"
+      className="surface-dark-section relative isolate overflow-hidden border-t border-b border-white/5 bg-brand-navy text-white py-[100px] sm:py-[120px]"
+    >
+      {/* Cinematic Background Layer */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <Image 
+          src="/images/cta.jpg" 
+          alt="MB Infra luxury construction development showcase" 
+          fill
+          priority
+          className="object-cover scale-102 opacity-25 mix-blend-luminosity" 
+        />
+        {/* Soft Radial Textures & Ambient Lighting */}
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-navy via-[#041230]/95 to-brand-navy" />
+        <div className="absolute top-[-10%] left-[-5%] h-96 w-96 rounded-full bg-brand-asmani/10 blur-[130px]" />
+        <div className="absolute bottom-[-10%] right-[-5%] h-96 w-96 rounded-full bg-brand-asmani/5 blur-[130px]" />
+      </div>
 
       <div className="relative z-10 container-shell">
-        <div className="mx-auto max-w-5xl rounded-[40px] border border-white/10 bg-white/10 px-8 py-16 text-center backdrop-blur-xl lg:px-16">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#00C853]/30 bg-[#00C853]/10 px-5 py-2">
-            <Sparkles className="h-4 w-4 text-[#00C853]" />
-            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[#00C853]">
+        {/* Main Interface Wrapper Container: Enforced absolute Card Radius (28px) */}
+        <div className="mx-auto max-w-5xl rounded-brand-card border border-white/10 bg-white/[0.03] px-6 py-14 text-center backdrop-blur-xl sm:px-8 sm:py-16 lg:px-16">
+          
+          {/* Micro Tag Label Badge Component */}
+          <div className="inline-flex items-center gap-2 rounded-brand-badge border border-brand-emerald/20 bg-brand-emerald/10 px-4 py-1.5">
+            <Sparkles className="h-3.5 w-3.5 text-brand-emerald" />
+            <span className="text-[11px] font-bold tracking-[0.25em] text-brand-emerald uppercase">
               START YOUR JOURNEY
             </span>
           </div>
 
-          <h2 className="mt-8 text-5xl font-bold leading-tight text-white lg:text-7xl">
+          {/* Core Invitation Header Block */}
+          <h2 className="mt-6 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
             Let's Build Something
             <br />
-            <span className="text-[#00C853]">Extraordinary.</span>
+            <span className="text-brand-emerald">Extraordinary.</span>
           </h2>
 
-          <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-slate-200">
-            Whether you're planning a luxury villa, investing in premium real estate
-            or developing a commercial project, MB Infra combines engineering,
-            transparency and craftsmanship to bring your vision to life.
+          {/* Balanced Reading Body Copy */}
+          <p className="mx-auto mt-6 max-w-3xl text-sm sm:text-base leading-relaxed text-slate-300 font-normal">
+            Whether you're planning a villa, commercial project or investment, our team is ready to help you craft assets with engineering excellence, absolute transparency, and long-term value.
           </p>
 
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
+          {/* Interactive Button Selection System: Enforcing 18px boundary masks across styles */}
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+            
+            {/* Primary Style Button: Emerald Green */}
             <a
-              href="#projects"
-              className="group inline-flex items-center gap-2 rounded-xl bg-[#00C853] px-8 py-4 font-semibold text-white shadow-[0_20px_50px_rgba(0,200,83,.35)] transition-all duration-300 hover:-translate-y-1"
+              href="#contact"
+              className="button-primary group w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-brand-interactive"
             >
-              Schedule Site Visit
-              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              <span>Book Consultation</span>
+              <ArrowRight className="h-4 w-4 stroke-[2.5] transition-transform duration-300 group-hover:translate-x-1" />
             </a>
 
+            {/* Secondary Button Style: White Outline backdrop frame */}
             <a
-              href="tel:+919557427877"
-              className="group inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-8 py-4 font-semibold text-white backdrop-blur-xl transition-all duration-300 hover:bg-white hover:text-[#081C3A]"
+              href="#contact"
+              className="button-secondary w-full lg:w-auto inline-flex items-center justify-center border-2 border-white/10 bg-white/[0.04] text-white hover:bg-white/[0.12] hover:border-white/30 rounded-brand-interactive"
             >
-              <Phone className="h-5 w-5" />
-              Call Our Experts
+              Our Legacy
             </a>
           </div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            <div>
-              <h3 className="text-4xl font-bold text-[#00C853]">25+</h3>
-              <p className="mt-2 text-slate-300">Years of Excellence</p>
-            </div>
-            <div>
-              <h3 className="text-4xl font-bold text-[#00C853]">500+</h3>
-              <p className="mt-2 text-slate-300">Projects Delivered</p>
-            </div>
-            <div>
-              <h3 className="text-4xl font-bold text-[#00C853]">98%</h3>
-              <p className="mt-2 text-slate-300">Client Satisfaction</p>
-            </div>
+          {/* Embedded Internal Statistics Subtrack: Highlight values via Green strictly */}
+          <div className="mt-12 grid gap-6 border-t border-white/5 pt-8 sm:grid-cols-3">
+            {[
+              { value: "4.9★", label: "Average Rating" },
+              { value: "500+", label: "Projects Delivered" },
+              { value: "98%", label: "Client Satisfaction" },
+            ].map((s) => (
+              <div key={s.label} className="text-center">
+                <h3 className="text-3xl font-extrabold text-brand-emerald tracking-tight">{s.value}</h3>
+                <p className="mt-1 text-[11px] font-bold uppercase tracking-widest text-slate-400">{s.label}</p>
+              </div>
+            ))}
           </div>
+
         </div>
       </div>
     </section>

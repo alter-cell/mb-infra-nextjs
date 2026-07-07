@@ -1,186 +1,156 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
-  --surface: #ffffff;
-  --section: #eef4f7;
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
-  --secondary: #16a34a;
-  --secondary-hover: #15803d;
-  --accent: #d4af37;
-  --heading: #0f172a;
-  --body: #475569;
-  --border: #e2e8f0;
-  --foreground: var(--heading);
-  --shadow-soft: 0 18px 55px rgba(15, 23, 42, 0.08);
-  --shadow-card: 0 20px 60px rgba(15, 23, 42, 0.08);
+  /* --- BRAND COLORS --- */
+  --brand-navy: #0B1F4D;          /* Primary Navy: Navbar, Footer, Dark Sections */
+  --brand-asmani: #6EC6FF;        /* Asmani Blue: Ambient Glow, Radial Textures */
+  --brand-emerald: #16C55F;       /* Emerald Green: Primary CTA, Icons, Active States */
+  --brand-white: #FFFFFF;         /* White: Cards, Main Backgrounds */
+  
+  /* --- TYPOGRAPHY TOKENS --- */
+  --heading: #0F172A;             /* Light Background Headings[cite: 1] */
+  --body: #475569;                /* Light Background Body Text[cite: 1] */
+  --secondary: #64748B;           /* Light Background Secondary Labels[cite: 1] */
+  --border: #E5E7EB;              /* Clean Consistent Border Matrix[cite: 1] */
+  
+  /* --- BORDER RADIUS SYSTEM --- */
+  --radius-card: 28px;            /* Large Cards & Images[cite: 1] */
+  --radius-interactive: 18px;     /* Buttons & Inputs[cite: 1] */
+  --radius-badge: 999px;          /* Badges[cite: 1] */
+  
+  /* --- SHADOW SYSTEM --- */
+  --shadow-luxury: 0 20px 40px -15px rgba(11, 31, 77, 0.05); /* Soft Luxury Shadow[cite: 1] */
+  --shadow-emerald: 0 8px 20px -4px rgba(22, 197, 95, 0.25); /* Subtle Green Glow[cite: 1] */
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
-  --color-accent: var(--accent);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-brand-navy: var(--brand-navy);
+  --color-brand-asmani: var(--brand-asmani);
+  --color-brand-emerald: var(--brand-emerald);
+  --color-brand-heading: var(--heading);
+  --color-brand-body: var(--body);
+  --color-brand-secondary: var(--secondary);
 }
 
+/* --- BASE STYLES --- */
 html {
   scroll-behavior: smooth;
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--brand-white); /* Light sections default to pure white[cite: 1] */
+  color: var(--body);
 }
 
 body {
   margin: 0;
-  background:
-    radial-gradient(circle at top left, rgba(37, 99, 235, 0.07), transparent 28%),
-    linear-gradient(135deg, #f8fafc 0%, #f8fafc 100%);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  min-height: 100vh;
-  line-height: 1.6;
+  /* Light background setup: White with barely visible, soft sky-blue radial lighting[cite: 1] */
+  background: 
+    radial-gradient(circle at 50% 0%, rgba(110, 198, 255, 0.04), transparent 50%),
+    linear-gradient(to bottom, #FFFFFF 0%, #FFFFFF 100%);
+  color: var(--body);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
 }
 
 ::selection {
-  background: rgba(37, 99, 235, 0.2);
-  color: var(--heading);
+  background: rgba(22, 197, 95, 0.2); /* Emerald accent highlight block[cite: 1] */
+  color: var(--brand-navy);
 }
 
 a {
   color: inherit;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
+/* --- RE-ARCHITECTED SYSTEM LAYERS --- */
 @layer components {
+  /* Standard layout constraint shell[cite: 1] */
   .container-shell {
-    @apply mx-auto w-full max-w-[1400px] px-6 sm:px-8 lg:px-10;
+    @apply mx-auto w-full max-w-[1400px] px-6 sm:px-8;
+    gap: var(--brand-md);
   }
 
+  /* Standardized section margins[cite: 1] */
   .section-shell {
-    @apply py-14 sm:py-16 lg:py-20;
+    @apply py-[100px] sm:py-[120px]; /* Section padding 100-120px[cite: 1] */
   }
 
+  /* Small Labels uppercase tracking rule[cite: 1] */
   .section-label {
-    @apply text-[11px] font-semibold uppercase tracking-[0.35em] text-[color:var(--primary)];
+    @apply text-[11px] font-bold uppercase tracking-[0.25em] text-brand-emerald; /* Guided accent highlight[cite: 1] */
   }
 
+  /* Section Headings[cite: 1] */
   .section-title {
-    @apply text-3xl font-semibold tracking-[-0.02em] text-[color:var(--heading)] sm:text-4xl lg:text-5xl;
+    @apply text-3xl font-extrabold tracking-tight text-brand-heading sm:text-4xl lg:text-5xl;
+    margin-bottom: var(--brand-md);
   }
 
+  /* Standard Reading Copy[cite: 1] */
   .section-copy {
-    @apply text-base leading-8 text-[color:var(--body)] sm:text-lg;
+    @apply text-sm sm:text-base leading-relaxed text-brand-body max-w-2xl font-normal;
   }
 
+  /* Premium Uniform Card Shell[cite: 1] */
   .card-surface {
-    @apply rounded-[24px] border border-[color:var(--border)] bg-[color:var(--surface)] shadow-[0_18px_60px_rgba(15,23,42,0.08)];
+    border-radius: var(--radius-card); /* Strict 28px[cite: 1] */
+    @apply border border-slate-200/60 bg-white shadow-brand-luxury transition-all duration-300 transform-gpu;
   }
 
+  /* Primary Button: Green, tactile, identical heights and radii[cite: 1] */
   .button-primary {
-    @apply inline-flex items-center justify-center rounded-full bg-[color:var(--primary)] px-6 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[color:var(--primary-hover)] hover:shadow-[0_15px_35px_rgba(37,99,235,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)];
+    height: 54px;
+    border-radius: var(--radius-interactive); /* Strict 18px[cite: 1] */
+    @apply inline-flex items-center justify-center bg-brand-emerald px-8 text-xs font-bold uppercase tracking-widest text-white shadow-brand-emerald transition-all duration-300 ease-out hover:bg-[#12b050] hover:scale-[1.02] active:scale-[0.98] focus:outline-none transform-gpu;
   }
 
+  /* Secondary Button: White outline, matching parameters[cite: 1] */
   .button-secondary {
-    @apply inline-flex items-center justify-center rounded-full border border-[color:var(--border)] px-6 py-3.5 text-sm font-semibold text-[color:var(--primary)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[color:var(--primary)] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--background)];
+    height: 54px;
+    border-radius: var(--radius-interactive); /* Strict 18px[cite: 1] */
+    @apply inline-flex items-center justify-center border-2 border-[#E5E7EB] bg-white px-8 text-xs font-bold uppercase tracking-widest text-brand-navy transition-all duration-300 ease-out hover:border-brand-navy hover:bg-brand-navy hover:text-white active:scale-[0.98] focus:outline-none transform-gpu;
   }
 }
 
 @layer utilities {
-  .surface-section {
-    background-color: var(--section);
+  /* Clean Dark Section Canvas Strategy: Deep Navy with atmospheric soft Asmani Blue gradient glows[cite: 1] */
+  .surface-dark-section {
+    background: 
+      radial-gradient(circle at 80% 20%, rgba(110, 198, 255, 0.06), transparent 45%),
+      radial-gradient(circle at 10% 80%, rgba(22, 197, 95, 0.02), transparent 40%),
+      linear-gradient(180deg, #0B1F4D 0%, #041230 100%);
+    @apply text-white;
   }
 
-  .surface-card {
-    background-color: var(--surface);
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow-card);
+  /* Strict text contrast enforcement for dark sections[cite: 1] */
+  .surface-dark-section h1,
+  .surface-dark-section h2,
+  .surface-dark-section h3,
+  .surface-dark-section h4 {
+    @apply text-white !important; /* Headings become pure white on dark[cite: 1] */
   }
 
-  .text-heading {
-    color: var(--heading);
+  .surface-dark-section p {
+    @apply text-slate-300/90 !important; /* Paragraphs become clean light-gray[cite: 1] */
   }
 
-  .text-body {
-    color: var(--body);
-  }
-
-  .text-accent {
-    color: var(--accent);
-  }
-
-  .text-primary {
-    color: var(--primary);
-  }
-
-  .text-secondary {
-    color: var(--secondary);
-  }
-
-  .border-soft {
-    border-color: var(--border);
-  }
+  /* System Spacing Classes mapping custom extend properties exactly[cite: 1] */
+  .gap-brand-sm { gap: 12px; }
+  .gap-brand-md { gap: 24px; }
+  .gap-brand-section { gap: 40px; }
 }
 
-.bg-\[\#0F1115\],
-.bg-\[\#111318\],
-.bg-\[\#0B0D11\] {
-  background-color: var(--background) !important;
-}
-
-.bg-\[\#171A20\],
-.bg-\[\#111827\/85\] {
-  background-color: var(--surface) !important;
-}
-
-.bg-black\/80,
-.bg-black\/95,
-.bg-black\/75,
-.bg-black\/85 {
-  background-color: rgba(15, 23, 42, 0.92) !important;
-}
-
+/* --- OVERRIDES & CLEANUP LAYER --- */
+/* Completely clean up dirty utility classes and enforce brand color boundaries natively[cite: 1] */
 .text-white {
-  color: var(--heading) !important;
+  color: inherit; 
 }
 
-.text-gray-400,
-.text-gray-500,
-.text-gray-600 {
-  color: var(--body) !important;
+/* Enforce radii constraints onto any leftover image or input elements[cite: 1] */
+input, select {
+  border-radius: var(--radius-interactive) !important; /* Strict 18px[cite: 1] */
 }
 
-.text-\[\#C89B3C\] {
-  color: var(--accent) !important;
-}
-
-.bg-\[\#C89B3C\] {
-  background-color: var(--accent) !important;
-}
-
-.border-\[\#C89B3C\] {
-  border-color: var(--accent) !important;
-}
-
-.border-white\/10,
-.border-white\/20,
-.border-white\/30,
-.border-white\/5 {
-  border-color: var(--border) !important;
-}
-
-.hover\:border-\[\#C89B3C\]:hover {
-  border-color: var(--accent) !important;
-}
-
-.hover\:text-\[\#C89B3C\]:hover {
-  color: var(--accent) !important;
-}
-
-.hover\:bg-\[\#C89B3C\]:hover {
-  background-color: var(--accent) !important;
+.property-card-img-wrapper img {
+  border-radius: var(--radius-card) var(--radius-card) 0 0 !important; /* Standardize card upper image mask[cite: 1] */
 }
