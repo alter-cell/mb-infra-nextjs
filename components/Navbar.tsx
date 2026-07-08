@@ -12,7 +12,6 @@ import {
   Briefcase,
   Landmark,
   ArrowRight,
-  Phone,
   ChevronRight,
   MapPin,
   Calendar,
@@ -25,14 +24,14 @@ interface NavItem {
   icon: React.ComponentType<{ className?: string }>;
 }
 
-// --- Navigation Data ---
+// --- Navigation Data: "Contact" item restored ---
 const navItems: NavItem[] = [
   { name: "Home", href: "/", icon: Home },
   { name: "Our Legacy", href: "/#about", icon: Building2 },
   { name: "Services", href: "/#services", icon: Briefcase },
   { name: "Projects", href: "/properties", icon: Landmark },
   { name: "Investment", href: "/#investment", icon: ArrowRight },
-  { name: "Contact", href: "/#contact", icon: Phone },
+  { name: "Contact", href: "/#contact", icon: ArrowRight },
 ];
 
 export default function Navbar() {
@@ -92,7 +91,6 @@ export default function Navbar() {
               ? "border-brand-navy/10 bg-brand-navy/95 shadow-brand-luxury backdrop-blur-xl"
               : "border-white/15 bg-white/10 shadow-brand-luxury backdrop-blur-2xl"
           }`}
-          
         >
           {/* Brand Identity Branding Logo Section */}
           <Link
@@ -146,15 +144,8 @@ export default function Navbar() {
             </ul>
           </nav>
 
-          {/* Desktop Right Call to Actions */}
+          {/* Right Action Stack Controls */}
           <div className="flex items-center gap-3">
-            <Link
-              href="/#contact"
-              className="hidden h-[44px] inline-flex items-center justify-center rounded-[18px] border-2 border-white/20 bg-transparent px-5 text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-white/5 hover:border-white lg:flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-            >
-              Call Our Experts
-            </Link>
-
             <Link
               href="/schedule"
               className="hidden h-[44px] inline-flex items-center justify-center rounded-[18px] bg-brand-emerald px-5 text-xs font-bold uppercase tracking-widest text-white shadow-brand-emerald transition-all duration-300 hover:bg-[#12b050] hover:-translate-y-0.5 lg:flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-emerald"
@@ -162,7 +153,7 @@ export default function Navbar() {
               Schedule Site Visit
             </Link>
 
-            {/* Mobile Menu Action Trigger Toggle */}
+            {/* Mobile Menu Action Trigger Toggle - Forced hidden >=1024px */}
             <button
               ref={menuButtonRef}
               type="button"
@@ -275,7 +266,7 @@ export default function Navbar() {
           </nav>
 
           {/* Intermediate Action CTA Controls Block Layout */}
-          <div className="border-t border-white/10 bg-slate-950/20 px-6 py-6 space-y-3">
+          <div className="border-t border-white/10 bg-slate-950/20 px-6 py-6">
             <Link
               href="/schedule"
               onClick={closeDrawer}
@@ -283,15 +274,6 @@ export default function Navbar() {
             >
               <Calendar className="h-4 w-4" />
               Schedule Site Visit
-            </Link>
-
-            <Link
-              href="/#contact"
-              onClick={closeDrawer}
-              className="flex h-[48px] w-full items-center justify-center gap-2 rounded-[18px] border-2 border-white/20 bg-white/5 px-4 text-center text-xs font-bold uppercase tracking-widest text-white transition-all duration-200 hover:border-white/60 hover:bg-white/10 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-            >
-              <Phone className="h-4 w-4 text-white/90" />
-              Call Our Experts
             </Link>
           </div>
 
