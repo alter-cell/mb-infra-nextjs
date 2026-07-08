@@ -11,12 +11,12 @@ interface FilterProps {
 export default function Filter({ activeCategory, onCategoryChange }: FilterProps) {
   // Curated list aligning perfectly with the core luxury business verticals
   const categories = [
-    "All Portfolios",
-    "Villa",
-    "Plot",
-    "Farm House",
-    "Commercial",
-    "Investment",
+    { name: "All Portfolios", value: "all" },
+    { name: "Villa", value: "villa" },
+    { name: "Plot", value: "plot" },
+    { name: "Farm House", value: "farm house" },
+    { name: "Commercial", value: "commercial" },
+    { name: "Investment", value: "investment" },
   ];
 
   return (
@@ -31,26 +31,24 @@ export default function Filter({ activeCategory, onCategoryChange }: FilterProps
         <div className="flex items-center justify-start md:justify-center gap-8 sm:gap-10 overflow-x-auto snap-x flex-nowrap pb-2 md:pb-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           
           {categories.map((category) => {
-            const isActive = 
-              activeCategory.toLowerCase() === category.toLowerCase() ||
-              (category === "All Portfolios" && activeCategory === "All Types");
+            const isActive = activeCategory.toLowerCase().trim() === category.value.toLowerCase().trim();
 
             return (
               <button
-                key={category}
+                key={category.value}
                 type="button"
-                onClick={() => onCategoryChange(category === "All Portfolios" ? "All Types" : category)}
-                // Standard uppercase styling, letter spacing, and tactile micro-interactions[cite: 1]
+                onClick={() => onCategoryChange(category.value)}
+                // Standard uppercase styling, letter spacing, and tactile micro-interactions
                 className="group relative py-3.5 px-2 text-[11px] uppercase tracking-[0.25em] font-bold transition-all duration-300 flex-shrink-0 snap-align-start focus:outline-none select-none transform-gpu active:scale-[0.98]"
               >
-                {/* Text Layer: Balanced Contrast Shifting with Primary Brand Tokens[cite: 1] */}
+                {/* Text Layer: Balanced Contrast Shifting with Primary Brand Tokens */}
                 <span className={`relative z-10 transition-colors duration-300 ease-out ${
-                  isActive ? "text-brand-navy" : "text-brand-secondary hover:text-brand-heading"
+                  isActive ? "text-brand-navy font-extrabold" : "text-brand-secondary hover:text-brand-heading"
                 }`}>
-                  {category}
+                  {category.name}
                 </span>
 
-                {/* Intentional Shared Motion Indicator System using Emerald Green[cite: 1] */}
+                {/* Intentional Shared Motion Indicator System using Emerald Green */}
                 {isActive ? (
                   <motion.span 
                     layoutId="activeCategoryIndicator"
@@ -58,7 +56,7 @@ export default function Filter({ activeCategory, onCategoryChange }: FilterProps
                     transition={{ type: "spring", stiffness: 380, damping: 32 }}
                   />
                 ) : (
-                  /* Subtle atmospheric hover highlight using light secondary slate parameters[cite: 1] */
+                  /* Subtle atmospheric hover highlight using light secondary slate parameters */
                   <span className="absolute bottom-0 left-2 right-2 h-[2px] bg-brand-navy/0 rounded-brand-badge transition-all duration-300 ease-out group-hover:bg-brand-navy/10 transform-gpu" />
                 )}
               </button>
