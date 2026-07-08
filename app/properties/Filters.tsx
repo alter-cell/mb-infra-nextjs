@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 
 interface FilterProps {
   activeCategory: string;
@@ -9,7 +8,6 @@ interface FilterProps {
 }
 
 export default function Filter({ activeCategory, onCategoryChange }: FilterProps) {
-  // Curated list aligning perfectly with the core luxury business verticals
   const categories = [
     { name: "All Portfolios", value: "all" },
     { name: "Villa", value: "villa" },
@@ -20,52 +18,30 @@ export default function Filter({ activeCategory, onCategoryChange }: FilterProps
   ];
 
   return (
-    // Background Canvas: Pure white surface utilizing soft luxury layout rules
-    <section 
-      id="portfolio-filter" 
-      className="bg-[#FFFFFF] py-4 border-b border-[#E5E7EB]/70 relative z-20 shadow-brand-luxury"
-    >
-      <div className="max-w-[1400px] mx-auto px-6 sm:px-8">
+    <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 mb-10">
+      {/* Clean Horizontal Track with soft background capsule framing */}
+      <div className="flex items-center justify-start gap-3 overflow-x-auto overflow-y-hidden py-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden snap-x flex-nowrap w-full">
         
-        {/* Mobile: Smooth native swipe navigation | Desktop: Centered editorial lookbook track */}
-        <div className="flex items-center justify-start md:justify-center gap-8 sm:gap-10 overflow-x-auto snap-x flex-nowrap pb-2 md:pb-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          
-          {categories.map((category) => {
-            const isActive = activeCategory.toLowerCase().trim() === category.value.toLowerCase().trim();
+        {categories.map((category) => {
+          const isActive = activeCategory.toLowerCase().trim() === category.value.toLowerCase().trim();
 
-            return (
-              <button
-                key={category.value}
-                type="button"
-                onClick={() => onCategoryChange(category.value)}
-                // Standard uppercase styling, letter spacing, and tactile micro-interactions
-                className="group relative py-3.5 px-2 text-[11px] uppercase tracking-[0.25em] font-bold transition-all duration-300 flex-shrink-0 snap-align-start focus:outline-none select-none transform-gpu active:scale-[0.98]"
-              >
-                {/* Text Layer: Balanced Contrast Shifting with Primary Brand Tokens */}
-                <span className={`relative z-10 transition-colors duration-300 ease-out ${
-                  isActive ? "text-brand-navy font-extrabold" : "text-brand-secondary hover:text-brand-heading"
-                }`}>
-                  {category.name}
-                </span>
-
-                {/* Intentional Shared Motion Indicator System using Emerald Green */}
-                {isActive ? (
-                  <motion.span 
-                    layoutId="activeCategoryIndicator"
-                    className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-brand-emerald rounded-brand-badge transform-gpu shadow-brand-emerald"
-                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                  />
-                ) : (
-                  /* Subtle atmospheric hover highlight using light secondary slate parameters */
-                  <span className="absolute bottom-0 left-2 right-2 h-[2px] bg-brand-navy/0 rounded-brand-badge transition-all duration-300 ease-out group-hover:bg-brand-navy/10 transform-gpu" />
-                )}
-              </button>
-            );
-          })}
-
-        </div>
+          return (
+            <button
+              key={category.value}
+              type="button"
+              onClick={() => onCategoryChange(category.value)}
+              className={`text-[10px] uppercase tracking-[0.2em] font-bold px-5 py-2.5 rounded-full transition-all duration-300 flex-shrink-0 snap-align-start focus:outline-none select-none border transform-gpu active:scale-[0.97] ${
+                isActive 
+                  ? "bg-brand-navy text-white border-brand-navy shadow-sm" 
+                  : "bg-white text-gray-400 border-gray-100 hover:text-brand-navy hover:border-gray-300"
+              }`}
+            >
+              {category.name}
+            </button>
+          );
+        })}
 
       </div>
-    </section>
+    </div>
   );
 }

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { MapPin, BedDouble, Maximize2, ArrowUpRight } from "lucide-react";
 
-// 1. Data Contract Model definition 
+// --- Data Contract Model ---
 export interface Property {
   id: number;
   title: string;
@@ -16,7 +16,7 @@ export interface Property {
   image: string;
 }
 
-// 2. Data Array Isolation - Pointed precisely to your real public/images/ files!
+// --- Data Array Isolation (Mapped to local production paths) ---
 const properties: Property[] = [
   { id: 1, title: "Luxury Villa", category: "Villa", location: "Dehradun", price: "₹1.25 Cr", area: "3,200 sq.ft", bedrooms: "4 BHK", status: "Ready to Move", image: "/images/villa.png" },
   { id: 2, title: "Premium Plot", category: "Plot", location: "Mussoorie", price: "₹16,000 / sq.ft", area: "2,400 sq.ft", status: "Investment", image: "/images/plots.jpg" },
@@ -32,104 +32,89 @@ interface PropertyGridProps {
 
 export default function PropertyGrid({ activeCategory = "all" }: PropertyGridProps) {
   
-  // 3. High Performance Category Filter Matching Logic with Case-Insensitive Normalization
+  // High-Performance Filter Matching Normalization
   const filteredProperties = properties.filter((property) => {
     const normalizedActive = activeCategory.toLowerCase().trim();
-    
-    // Catch both variations of "all" states originating from components cleanly
-    if (
-      normalizedActive === "all" || 
-      normalizedActive === "all types" || 
-      normalizedActive === "all portfolios"
-    ) {
+    if (normalizedActive === "all" || normalizedActive === "all portfolios" || normalizedActive === "all types") {
       return true;
     }
-    
     return property.category.toLowerCase().trim() === normalizedActive;
   });
 
   return (
-    // Background Canvas: Pure crisp white layout space
-    <section id="properties" className="max-w-[1400px] mx-auto px-6 sm:px-8 py-8 bg-[#FFFFFF]">
+    // Background Canvas: Premium neutral lookbook framing that lets white cards pop
+    <section id="properties" className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 pb-16 bg-[#FAFAFA]">
       
-      {/* Editorial Header Block */}
-      <div className="flex flex-col items-start md:items-center text-left md:text-center mb-16 space-y-4">
-        <p className="uppercase tracking-[0.25em] text-brand-emerald text-xs font-bold">
-          Curated Portfolios
-        </p>
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-brand-heading">
-          Explore Premium Properties
-        </h2>
-        <p className="text-sm text-brand-body max-w-2xl font-normal leading-relaxed">
-          Carefully selected villas, premium plots, commercial spaces, and high-yield investment structures across key Himalayan hubs.
-        </p>
-      </div>
+      {/* 
+        NOTE: Redundant inner text headers removed completely. 
+        Flow directly transitions from your page main title into the filtered inventory cards cleanly.
+      */}
 
-      {/* Grid Container - 28px card constraints */}
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {/* Grid Container - Calibrated layout column tracks across mobile, tablets, and laptops */}
+      <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
         {filteredProperties.map((property) => (
           <div
             key={property.id}
-            className="group flex flex-col rounded-brand-card overflow-hidden bg-[#FFFFFF] border border-[#E5E7EB]/70 transition-all duration-500 ease-out hover:shadow-brand-luxury transform-gpu"
+            className="group flex flex-col rounded-3xl overflow-hidden bg-white border border-gray-100 transition-all duration-500 ease-out hover:shadow-xl hover:border-gray-200/60 transform-gpu"
           >
             
-            {/* Cinematic Image Frame with Strict 28px Upper Curves */}
-            <div className="relative aspect-[16/10] overflow-hidden bg-brand-navy/5">
+            {/* Cinematic Image Frame with Precise Curved Outlines */}
+            <div className="relative aspect-[16/10] overflow-hidden bg-gray-50">
               <Image
                 src={property.image}
                 alt={`${property.title} for Sale in ${property.location} by MB Infra`}
                 fill
-                sizes="(max-width: 7xl) 33vw, 50vw"
-                className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.02] transform-gpu"
+                sizes="(max-w-7xl) 33vw, 50vw"
+                className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03] transform-gpu"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/20 via-transparent to-transparent opacity-80" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60" />
               
-              {/* Unified Brand Tag Component */}
-              <span className="absolute top-4 left-4 h-7 inline-flex items-center bg-brand-navy text-white text-[10px] uppercase tracking-widest font-bold px-3 rounded-brand-badge shadow-md">
+              {/* Premium Floating Badge Status */}
+              <span className="absolute top-4 left-4 h-6 inline-flex items-center bg-brand-navy text-white text-[9px] uppercase tracking-widest font-bold px-2.5 rounded shadow-sm">
                 {property.status}
               </span>
             </div>
 
-            {/* Asset Details Wrapper */}
-            <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between bg-[#FFFFFF]">
+            {/* Asset Details Wrapper Container */}
+            <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between bg-white">
               <div>
                 <p className="text-brand-emerald uppercase tracking-[0.2em] text-[10px] font-bold mb-1.5">
                   {property.category}
                 </p>
-                {/* Structural Card Heading optimized to H3 for hierarchy integrity */}
-                <h3 className="text-xl font-bold tracking-tight text-brand-heading group-hover:text-brand-navy transition-colors duration-300">
+                {/* Structural Card Title Heading optimized to H3 for hierarchy crawling */}
+                <h3 className="text-xl font-bold tracking-tight text-brand-navy group-hover:text-brand-emerald transition-colors duration-300">
                   {property.title}
                 </h3>
                 
-                <div className="flex items-center gap-1.5 mt-2 text-brand-secondary text-xs font-medium">
-                  <MapPin size={14} className="text-brand-navy" />
+                <div className="flex items-center gap-1.5 mt-2 text-gray-400 text-xs font-medium">
+                  <MapPin size={13} className="text-brand-navy" />
                   <span>{property.location}, Uttarakhand</span>
                 </div>
 
-                {/* Specification Grid with fixed-height constraint to block structural layout shifts */}
-                <div className="flex items-center gap-6 mt-6 pt-4 border-t border-[#F5F7FA] text-brand-body text-xs font-semibold min-h-[44px]">
+                {/* Specification Grid with layout shift blocking */}
+                <div className="flex items-center gap-6 mt-6 pt-4 border-t border-gray-50 text-gray-500 text-xs font-semibold min-h-[44px]">
                   {property.bedrooms ? (
                     <div className="flex items-center gap-2">
-                      <BedDouble size={16} className="text-brand-secondary/60" />
+                      <BedDouble size={15} className="text-gray-400" />
                       <span>{property.bedrooms}</span>
                     </div>
                   ) : (
                     <div className="flex items-center gap-2">
-                      <span className="text-brand-secondary/50 font-light italic">Premium Tier Land Asset</span>
+                      <span className="text-gray-400 font-light italic">Premium Tier Land Asset</span>
                     </div>
                   )}
                   <div className="flex items-center gap-2">
-                    <Maximize2 size={16} className="text-brand-secondary/60" />
+                    <Maximize2 size={15} className="text-gray-400" />
                     <span>{property.area}</span>
                   </div>
                 </div>
               </div>
 
-              {/* Pricing Call To Action Elements */}
-              <div className="flex items-end justify-between mt-8 pt-4 border-t border-[#F5F7FA]">
+              {/* Pricing Column Container Block */}
+              <div className="flex items-end justify-between mt-8 pt-4 border-t border-gray-50">
                 <div className="flex flex-col">
-                  <span className="text-[10px] uppercase tracking-wider text-brand-secondary font-bold">
+                  <span className="text-[10px] uppercase tracking-wider text-gray-400 font-bold">
                     Investment Value
                   </span>
                   <span className="text-2xl font-extrabold text-brand-navy tracking-tight mt-0.5">
@@ -137,11 +122,11 @@ export default function PropertyGrid({ activeCategory = "all" }: PropertyGridPro
                   </span>
                 </div>
 
-                {/* Dynamic Action Trigger Button Component */}
+                {/* Tactile Micro-interactive Action Button Container */}
                 <Link
                   href={`/properties/${property.id}`}
                   aria-label={`View full specifications and pricing details for ${property.title} in ${property.location}`}
-                  className="group/btn flex h-11 w-11 items-center justify-center rounded-brand-interactive bg-brand-emerald text-white transition-all duration-300 hover:bg-[#12b050] hover:scale-105 shadow-brand-emerald transform-gpu"
+                  className="group/btn flex h-11 w-11 items-center justify-center rounded-xl bg-brand-emerald text-white transition-all duration-300 hover:bg-[#12b050] hover:scale-105 active:scale-95 shadow-md transform-gpu"
                 >
                   <ArrowUpRight size={18} className="transition-transform duration-500 group-hover/btn:rotate-45" />
                 </Link>

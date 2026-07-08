@@ -92,6 +92,7 @@ export default function Navbar() {
               ? "border-brand-navy/10 bg-brand-navy/95 shadow-brand-luxury backdrop-blur-xl"
               : "border-white/15 bg-white/10 shadow-brand-luxury backdrop-blur-2xl"
           }`}
+          
         >
           {/* Brand Identity Branding Logo Section */}
           <Link
