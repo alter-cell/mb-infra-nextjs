@@ -43,12 +43,12 @@ const features: FeatureItem[] = [
 
 const stats: StatItem[] = [
   {
-    value: "25+",
+    value: "29+",
     label: "Years",
     position: "top-4 left-4 sm:top-8 sm:-left-6 lg:-left-10",
   },
   {
-    value: "500+",
+    value: "50+",
     label: "Projects",
     position: "bottom-12 left-4 sm:bottom-24 sm:-left-8",
   },
@@ -62,18 +62,23 @@ const stats: StatItem[] = [
 const timelineItems: TimelineItem[] = [
   {
     year: "1997",
-    title: "Company Founded",
-    text: "The beginning of MB Infra's journey in Uttarakhand.",
+    title: "the beginning",
+    text: "Our founder began undertaking construction contracts, laying the groundwork for what would later become MB Infra.",
   },
   {
     year: "2010",
     title: "Expansion",
-    text: "Expanded into residential and commercial developments.",
+    text: "Expanded into large residential and commercial construction projects, earning long-term client trust through consistent quality.",
   },
   {
     year: "2018",
     title: "Premium Projects",
-    text: "Luxury villas and premium investment opportunities.",
+    text: "Foused on premium residences, luxury villas and high-value commercial developments with an emphasis on engineering excellence.",
+  },
+  {
+    year: "2025",
+    title: "MB Infra Pvt. Ltd.",
+    text: "Mount Build Infrastructure Pvt. Ltd. was officially incorporated, bringing nearly three decades of constrction experience under one trusted brand.",
   },
   {
     year: "Today",
@@ -169,11 +174,11 @@ export default function About() {
             {/* Trust Numeric Array Matrix */}
             <div className="grid grid-cols-3 gap-4 border-y border-slate-200/60 py-5">
               <div>
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-emerald tracking-tight">500+</h3>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-emerald tracking-tight">50+</h3>
                 <p className="text-xs font-bold uppercase tracking-wider text-brand-secondary mt-1">Projects</p>
               </div>
               <div className="border-x border-slate-200/60 px-4">
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-emerald tracking-tight">300Cr+</h3>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-emerald tracking-tight">3Cr+</h3>
                 <p className="text-xs font-bold uppercase tracking-wider text-brand-secondary mt-1">Value</p>
               </div>
               <div className="pl-4">

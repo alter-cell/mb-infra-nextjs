@@ -1,3 +1,13 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  description: "Build your luxury dream villa or invest in premium infrastructure assets across Dehradun, Mussoorie, and Rishikesh with Uttarakhand's trusted construction partner.",
+  alternates: {
+    canonical: "https://mbinfra.in",
+  },
+};
+
+
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";

@@ -1,4 +1,15 @@
-"use client";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Premium Luxury Properties & Plots for Sale",
+  description: "Explore curated residential luxury villas, high-growth investment plots, and commercial properties across Dehradun and Mussoorie with guaranteed compliance.",
+  alternates: {
+    canonical: "https://mbinfra.in/properties",
+  },
+};
+
+
+use client";
 
 import React, { useState, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
@@ -24,7 +35,7 @@ export default function PropertiesPage() {
     setActiveDropdown(activeDropdown === name ? null : name);
   };
 
-  // Close open filter panels smoothly if a user clicks anywhere outside the bar
+  
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (filterSectionRef.current && !filterSectionRef.current.contains(event.target as Node)) {
@@ -36,7 +47,7 @@ export default function PropertiesPage() {
   }, []);
 
   return (
-    // Premium editorial canvas using structural white background matching global rules[cite: 1]
+     
     <main className="min-h-screen bg-[#FFFFFF] text-brand-body antialiased selection:bg-brand-emerald/20">
       
       {/* 50% Visual Presence: Deep Navy Cinematic Hero Segment[cite: 1] */}
