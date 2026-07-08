@@ -18,24 +18,30 @@ export interface Property {
 
 // 2. Data Array Isolation
 const properties: Property[] = [
-  { id: 1, title: "Luxury Villa", category: "Villa", location: "Dehradun", price: "₹1.25 Cr", area: "3,200 sq.ft", bedrooms: "4 BHK", status: "Ready to Move", image: "/images/villa.png" },
-  { id: 2, title: "Premium Plot", category: "Plot", location: "Mussoorie", price: "₹16,000 / sq.ft", area: "2,400 sq.ft", status: "Investment", image: "/images/plots.jpg" },
-  { id: 3, title: "Hill Farm House", category: "Farm House", location: "Farm House", price: "₹2.40 Cr", area: "5,200 sq.ft", bedrooms: "5 BHK", status: "New Launch", image: "/images/resort.jpg" },
-  { id: 4, title: "Commercial Space", category: "Commercial", location: "Dehradun", price: "₹95 Lakh", area: "1,800 sq.ft", status: "Available", image: "/images/villa.png" },
-  { id: 5, title: "Luxury Resort Unit", category: "Investment", location: "Mussoorie", price: "12% ROI", area: "850 sq.ft", bedrooms: "Studio", status: "Limited Units", image: "/images/resort.jpg" },
-  { id: 6, title: "Executive Villa", category: "Villa", location: "Haridwar", price: "₹1.75 Cr", area: "3,600 sq.ft", bedrooms: "5 BHK", status: "Premium", image: "/images/villa.png" },
+  { id: 1, title: "Luxury Villa", category: "Villa", location: "Dehradun", price: "₹1.25 Cr", area: "3,200 sq.ft", bedrooms: "4 BHK", status: "Ready to Move", image: "/images/luxury-villas-dehradun-mb-infra.png" },
+  { id: 2, title: "Premium Plot", category: "Plot", location: "Mussoorie", price: "₹16,000 / sq.ft", area: "2,400 sq.ft", status: "Investment", image: "/images/premium-investment-plots-mussoorie.jpg" },
+  { id: 3, title: "Hill Farm House", category: "Farm House", location: "Farm House", price: "₹2.40 Cr", area: "5,200 sq.ft", bedrooms: "5 BHK", status: "New Launch", image: "/images/hill-farm-house-uttarakhand.jpg" },
+  { id: 4, title: "Commercial Space", category: "Commercial", location: "Dehradun", price: "₹95 Lakh", area: "1,800 sq.ft", status: "Available", image: "/images/commercial-space-dehradun.png" },
+  { id: 5, title: "Luxury Resort Unit", category: "Investment", location: "Mussoorie", price: "12% ROI", area: "850 sq.ft", bedrooms: "Studio", status: "Limited Units", image: "/images/resort-investment-mussoorie.jpg" },
+  { id: 6, title: "Executive Villa", category: "Villa", location: "Haridwar", price: "₹1.75 Cr", area: "3,600 sq.ft", bedrooms: "5 BHK", status: "Premium", image: "/images/luxury-executive-villa-haridwar.png" },
 ];
 
 interface PropertyGridProps {
   activeCategory?: string;
 }
 
-export default function PropertyGrid({ activeCategory = "All Types" }: PropertyGridProps) {
+export default function PropertyGrid({ activeCategory = "all" }: PropertyGridProps) {
   
-  // 3. High Performance Category Filter Matching Logic
+  // 3. High Performance Category Filter Matching Logic with Case-Insensitive Normalization
   const filteredProperties = properties.filter((property) => {
-    if (activeCategory === "All Types") return true;
-    return property.category.toLowerCase() === activeCategory.toLowerCase();
+    const normalizedActive = activeCategory.toLowerCase();
+    
+    // Catch both variations of "all" states originating from components
+    if (normalizedActive === "all" || normalizedActive === "all types" || normalizedActive === "all portfolios") {
+      return true;
+    }
+    
+    return property.category.toLowerCase() === normalizedActive;
   });
 
   return (
@@ -67,7 +73,7 @@ export default function PropertyGrid({ activeCategory = "All Types" }: PropertyG
             <div className="relative aspect-[16/10] overflow-hidden bg-brand-navy/5">
               <Image
                 src={property.image}
-                alt={property.title}
+                alt={`${property.title} for Sale in ${property.location} by MB Infra`}
                 fill
                 sizes="(max-w-7xl) 33vw, 50vw"
                 className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.02] transform-gpu"
@@ -86,6 +92,7 @@ export default function PropertyGrid({ activeCategory = "All Types" }: PropertyG
                 <p className="text-brand-emerald uppercase tracking-[0.2em] text-[10px] font-bold mb-1.5">
                   {property.category}
                 </p>
+                {/* Structural Card Heading optimized to H3 for hierarchy integrity */}
                 <h3 className="text-xl font-bold tracking-tight text-brand-heading group-hover:text-brand-navy transition-colors duration-300">
                   {property.title}
                 </h3>
@@ -128,6 +135,7 @@ export default function PropertyGrid({ activeCategory = "All Types" }: PropertyG
                 {/* Dynamic High-Yield Action Trigger Component Button: Emerald Green */}
                 <Link
                   href={`/properties/${property.id}`}
+                  aria-label={`View full specifications and pricing details for ${property.title} in ${property.location}`}
                   className="group/btn flex h-11 w-11 items-center justify-center rounded-brand-interactive bg-brand-emerald text-white transition-all duration-300 hover:bg-[#12b050] hover:scale-105 shadow-brand-emerald transform-gpu"
                 >
                   <ArrowUpRight size={18} className="transition-transform duration-500 group-hover/btn:rotate-45" />
