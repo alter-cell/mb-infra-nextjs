@@ -3,8 +3,8 @@ import { Sparkles, ArrowRight } from "lucide-react";
 export default function Stats() {
   const stats = [
     { number: "25+", title: "Years", subtitle: "Industry Experience" },
-    { number: "500+", title: "Projects", subtitle: "Successfully Delivered" },
-    { number: "₹300Cr+", title: "Investment", subtitle: "Development Value" },
+    { number: "50+", title: "Projects", subtitle: "Successfully Delivered" },
+    { number: "₹3Cr+", title: "Investment", subtitle: "Development Value" },
     { number: "98%", title: "Client", subtitle: "Satisfaction Rate" },
   ];
 

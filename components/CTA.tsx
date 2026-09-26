@@ -72,7 +72,7 @@ export default function CTA() {
           <div className="mt-12 grid gap-6 border-t border-white/5 pt-8 sm:grid-cols-3">
             {[
               { value: "4.9★", label: "Average Rating" },
-              { value: "500+", label: "Projects Delivered" },
+              { value: "50+", label: "Projects Delivered" },
               { value: "98%", label: "Client Satisfaction" },
             ].map((s) => (
               <div key={s.label} className="text-center">
